@@ -17,3 +17,6 @@ each other. Artists have a dedicated space to upload their music, gain a followi
 platform fosters community interaction while providing exposure for emerging artists. Moderators ensure
 a positive user experience by managing comments and addressing any issues. Admins oversee the
 platform's operations and have the authority to ban users or artists if necessary.
+
+![Use Case Diagram](https://github.com/etgalang/TuneTribe/blob/main/TuneTribeUMLcase.png)
+
