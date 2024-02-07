@@ -7,9 +7,6 @@ TuneTribe - TT
 - Emmanuel Galang
 - Kannan Thilak
 
-## Nickname
-Tune
-
 ## Description
 TuneTribe is a social platform designed for music enthusiasts and artists alike. Users can share their
 favorite songs, create music-related posts, comment on friends' posts, and recommend songs/artists to
