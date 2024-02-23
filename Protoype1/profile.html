@@ -4,22 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - TuneTribe</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <iframe src="navbar.html" frameborder="0" scrolling="no"></iframe>
-
-    <header>
-        <h1>User Profile</h1>
-    </header>
+    
+<nav class="navbar">
+        <div class="container">
+            <div class="navbar-menu">
+                <button class="menu-btn"><i class="fas fa-bars"></i></button>
+                <div class="dropdown-content">
+                    <a href="profile.html">Profile</a>
+                    <a href="circle.html">Circle</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+            </div>
+            <h1 class="navHeader">User Profile</h1>
+            <div class="navbar-logo">
+                <a href="index.html">
+                    <img src="images/TTLogo.png" alt="TuneTribe Logo">
+                </a>
+            </div>
+        </div>
+    </nav>
     <main>
-        <section class="profile-details">
-            <h2>Profile Details</h2>
-            <p>Name: John Doe</p>
-            <p>Email: john@example.com</p>
-            <!-- Add more profile details as needed -->
-        </section>
-        <!-- Add more sections for additional profile content -->
+        <div class="container">
+            <div id="profileTextContainer">
+                <h2>XxJohnDoexX</h2>
+                <h4>Name: John Doe</h4>
+                <h4>Friends: 34</h4>
+                <h4>Posts: 67</h4>
+
+                <button>Edit Profile</button> <!--PaceHolder Button-->
+                
+            </div>
+        
+            <div id="profilePicContainer">
+                <img id="profilePic" src="images/JohnDoe.png" alt="Profile Image">
+            </div>
+        </div>
+        
+        <div id="topSongs">
+
+            <img id = "album" src="images/PoorlyDrawnLinesMouse.png" alt="Song 1"><span>Song 1</span>
+            <img id = "album" src="images/PoorlyDrawnLinesMouse.png" alt="Song 2"><span>Song 2</span>
+            <img id = "album" src="images/PoorlyDrawnLinesMouse.png" alt="Song 3"><span>Song 3</span>
+            <img id = "album" src="images/PoorlyDrawnLinesMouse.png" alt="Song 4"><span>Song 4</span>
+            <img id = "album" src="images/PoorlyDrawnLinesMouse.png" alt="Song 5"><span>Song 5</span>            
+
+        </div>
+
     </main>
 </body>
 </html>
+
+
+<!-- 
+
+    <div class = "profileContainer">
+
+        <section class="profile-details">
+            <h2>XxJohnDoexX</h2>
+            <div class = "image"></div>
+                <img id="profilePic" src="images/JohnDoe.png" alt="Profile Image">
+            </div>
+            <div class = "text">
+                <p>Name: John Doe</p>
+                <p>Email: john@example.com</p>
+            </div>
+        </section>
+    
+        </div>
+
+ -->

@@ -1,0 +1,164 @@
+body { /* This aplies to the while page unless a specific tag is used, in this case the tag takes seniority*/
+    background-color: #F8F2DC;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+header { /* Might Delete, No use (I didnt bother with other pages) */
+    background-color: #F8F2DC;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.navHeader { /* This will adjust navigation header text*/
+    margin: 0;
+    font-size:30px;
+}
+
+main {
+    padding: 20px;
+    width: 800px;
+    border:3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+    overflow: hidden;
+    margin: auto;
+}
+
+/* User Profile Page Stuff */
+#profilePic{
+    max-width: 150px;
+    max-height: 150px;
+    float: left;
+}
+
+#profileTextContainer{
+width: 500px;
+border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+}
+
+#profilePicContainer{
+    border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+}
+
+.container{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5px;
+}
+
+
+#topSongs{
+    width: 500px;
+    padding: 50px;
+    padding-left: 30px;
+    border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+
+}
+
+#album{
+    height: 75px;
+    width: 75px;
+}
+
+/* NavBar stuff*/
+.navbar {
+    background-color: #DEA47E;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu-btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 10px; /* Position the dropdown content below the menu button */
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.navbar-menu:hover .dropdown-content {
+    display: block;
+}
+
+.navbar-logo {
+    text-align: center;
+}
+
+.navbar-logo img {
+    width: 50%;
+    height: 50%;
+    border-radius: 10%;
+    margin: 0;
+    display: block;
+}
+
+/* Friends Stuff */
+.friends-list {
+    margin-bottom: 20px;
+}
+
+.friends-list h2 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.friends-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.friends-list li {
+    margin: 5px 0;
+}
+
+
+/* Profile Page Stuff*/
+.profile-details {
+    margin-bottom: 20px;
+}
+
+.profile-details h2 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.profile-details p {
+    margin: 5px 0;
+}
