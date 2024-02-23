@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.settings-options {
+    margin-bottom: 20px;
+}
+
+.settings-options h2 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.settings-options ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.settings-options li {
+    margin: 5px 0;
+}
