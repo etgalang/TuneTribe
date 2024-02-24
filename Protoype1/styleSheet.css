@@ -6,22 +6,16 @@ body { /* This aplies to the while page unless a specific tag is used, in this c
     
 }
 
-header { /* Might Delete, No use (I didnt bother with other pages) */
-    background-color: #F8F2DC;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
 .navHeader { /* This will adjust navigation header text*/
     margin: 0;
     font-size:30px;
 }
 
-main {
+main { /* This is where all content will be held so that it doesnt span the whole screen, instead its all centered and about the width of a tablet */
     padding: 20px;
     width: 800px;
-    border:3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+    /*border:3px solid #989898; /*We can delete this line, this is just to visualize the border around the contents*/
+    background-color: #F8F2DC ;
     overflow: hidden;
     margin: auto;
 }
@@ -35,11 +29,11 @@ main {
 
 #profileTextContainer{
 width: 500px;
-border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+    /*border: 3px solid #989898;  /*We can delete this line, this is just to visualize the border around the contents*/
 }
 
 #profilePicContainer{
-    border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+    /*border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
 }
 
 .container{
@@ -54,7 +48,8 @@ border: 3px solid #989898; /* We can delete this line, this is just to visualize
     width: 500px;
     padding: 50px;
     padding-left: 30px;
-    border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+    /*border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+    
 
 }
 
