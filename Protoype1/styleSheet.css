@@ -22,8 +22,9 @@ main { /* This is where all content will be held so that it doesnt span the whol
 
 /* User Profile Page Stuff */
 #profilePic{
-    max-width: 150px;
-    max-height: 150px;
+    max-height: 180px;
+    max-width: auto;
+    border-radius: 50px;
     float: left;
 }
 
