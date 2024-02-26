@@ -46,7 +46,7 @@ width: 500px;
     width: 90%;
     padding: 25px;
     padding-left: 30px;
-    border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
+    /*border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
     
 
 }
@@ -65,6 +65,11 @@ width: 500px;
 table {
     border-spacing: 20px;
     padding-top: 50px;
+}
+
+#sectionHeader{
+    font-size: 5;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 /* NavBar stuff*/
