@@ -1,40 +1,43 @@
-body { /* This aplies to the while page unless a specific tag is used, in this case the tag takes seniority*/
+body {
+  /* This aplies to the while page unless a specific tag is used, in this case the tag takes seniority*/
   background-color: #F8F2DC;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  
+
 }
 
-.navHeader { /* This will adjust navigation header text*/
+.navHeader {
+  /* This will adjust navigation header text*/
   margin: 0;
-  font-size:30px;
+  font-size: 30px;
 }
 
-main { /* This is where all content will be held so that it doesnt span the whole screen, instead its all centered and about the width of a tablet */
+main {
+  /* This is where all content will be held so that it doesnt span the whole screen, instead its all centered and about the width of a tablet */
   padding: 20px;
   width: 800px;
   /*border:3px solid #989898; /*We can delete this line, this is just to visualize the border around the contents*/
-  background-color: #F8F2DC ;
+  background-color: #F8F2DC;
   overflow: hidden;
   margin: auto;
 }
 
 /* User Profile Page Stuff */
-#profilePic{
+#profilePic {
   max-width: 150px;
   max-height: 150px;
   float: left;
 }
 
-#profileTextContainer{
-width: 500px;
+#profileTextadminRow {
+  width: 500px;
   /*border: 3px solid #989898;  /*We can delete this line, this is just to visualize the border around the contents*/
 }
 
 
 
-.container{
+.adminRow {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
@@ -42,22 +45,23 @@ width: 500px;
 }
 
 
-#topSongs{
+#topSongs {
   width: 90%;
   padding: 25px;
   padding-left: 30px;
-  border: 3px solid #989898; /* We can delete this line, this is just to visualize the border around the contents*/
-  
+  border: 3px solid #989898;
+  /* We can delete this line, this is just to visualize the border around the contents*/
+
 
 }
 
-#album{
+#album {
   height: 75px;
   width: 75px;
   border-radius: 20px;
 }
 
-#albumText{
+#albumText {
   padding: 50px;
   text-align: justify;
 }
@@ -74,7 +78,7 @@ table {
   padding: 10px 0;
 }
 
-.container {
+.adminRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -101,9 +105,10 @@ table {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
-  top: 10px; /* Position the dropdown content below the menu button */
+  top: 10px;
+  /* Position the dropdown content below the menu button */
 }
 
 .dropdown-content a {
@@ -201,7 +206,7 @@ table {
   display: flex;
   align-items: center;
   flex-direction: column;
-  
+
 }
 
 .details {
@@ -229,21 +234,22 @@ a {
   min-height: 100px;
 }
 
-.artProf .cols__container .left {
+.artProf .columnss .left {
   padding: 2px;
   text-align: center;
   max-width: 350px;
   position: relative;
-  
+
 }
 
-.artProf .cols__container .left .img__container {
+.artProf .columnss .left .imagePosts {
   position: absolute;
   top: -60px;
   left: 50%;
   transform: translatex(-50%);
 }
-.artProf .cols__container .left .img__container img {
+
+.artProf .columnss .left .imagePosts img {
   width: 120px;
   height: 120px;
   object-fit: cover;
@@ -254,71 +260,80 @@ a {
 }
 
 
-.artProf .cols__container .left h2 {
+.artProf .columnss .left h2 {
   margin-top: 60px;
   font-weight: 600;
   font-size: 22px;
   margin-bottom: 5px;
 }
-.artProf .cols__container .left p {
+
+.artProf .columnss .left p {
   font-size: 0.9rem;
   color: #818181;
   margin: 0;
 }
-.artProf .cols__container .left .about {
+
+.artProf .columnss .left .about {
   justify-content: space-between;
   position: relative;
   margin: 35px 0;
 }
-.artProf .cols__container .left .about li {
+
+.artProf .columnss .left .about li {
   display: flex;
   flex-direction: column;
   color: #818181;
   font-size: 0.9rem;
 }
 
-.artProf .cols__container .left .about li span {
+.artProf .columnss .left .about li span {
   color: #1d1d1d;
   font-weight: 600;
 }
 
 
 
-.artProf .cols__container .content p {
+.artProf .columnss .content p {
   font-size: 1rem;
   color: #1d1d1d;
   line-height: 1.8em;
 }
-.artProf .cols__container .content ul {
+
+.artProf .columnss .content ul {
   gap: 30px;
   justify-content: center;
   align-items: center;
   margin-top: 25px;
 }
-.artProf .cols__container .content ul li {
+
+.artProf .columnss .content ul li {
   display: flex;
 }
-.artProf .cols__container .content ul i {
+
+.artProf .columnss .content ul i {
   font-size: 1.3rem;
 }
-.artProf .cols__container .right__col nav {
+
+.artProf .columnss .right nav {
   display: flex;
   align-items: center;
   padding: 30px 0;
   justify-content: space-between;
   flex-direction: column;
 }
-.artProf .cols__container .right__col nav ul {
+
+.artProf .columnss .right nav ul {
   display: flex;
   gap: 20px;
   flex-direction: column;
 }
-.artProf .cols__container .right__col nav ul li a {
+
+.artProf .columnss .right nav ul li a {
   text-transform: uppercase;
   color: #818181;
 }
 
-.artProf .cols__container .right__col nav button {
+.artProf .columnss .right nav button {
   background: #0091ff;
   color: #fff;
   border: none;
@@ -328,17 +343,17 @@ a {
   margin-top: 20px;
 }
 
-.artProf .cols__container .right__col nav button:hover {
+.artProf .columnss .right nav button:hover {
   opacity: 0.8;
 }
 
-.artProf .cols__container .right__col .photos {
+.artProf .columnss .right .photos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 20px;
 }
 
-.artProf .cols__container .right__col .photos img {
+.artProf .columnss .right .photos img {
   max-width: 100%;
   display: block;
   height: 100%;
@@ -352,19 +367,14 @@ a {
 .Artistupload img {
   display: block;
   width: 40%;
-  }
+}
 
-  .Upload {
-    color: #fff;
-    padding-bottom: 40px;
-  }
+.Upload {
+  color: #fff;
+  padding-bottom: 40px;
+}
 
-
-
-/* Responsiveness */
-
-@media (min-width: 868px) {
-  .artProf .cols__container {
+  .artProf .columnss {
     max-width: 1200px;
     margin: 0 auto;
     width: 90%;
@@ -373,37 +383,14 @@ a {
     grid-template-columns: 1fr 2fr;
     gap: 50px;
   }
-  .artProf .cols__container .left {
-    padding: 25px 0px;
-  }
-  .artProf .cols__container .right__col nav ul {
-    flex-direction: row;
-    gap: 30px;
-  }
-  .artProf .cols__container .right__col .photos {
-    height: 365px;
-    overflow: auto;
-    padding: 0 0 30px;
-  }
-}
 
-@media (min-width: 1017px) {
-  .artProf .cols__container .left {
-    margin: 0;
-    margin-right: auto;
-  }
-  .artProf .cols__container .right__col nav {
+  .artProf .columnss .right nav {
     flex-direction: row;
   }
-  .artProf .cols__container .right__col nav button {
-    margin-top: 0;
-  }
-}
-
 
 
 /* Admin stuff */
-.home-content .overview-boxes{
+.Admins .AdminBox {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -411,7 +398,8 @@ a {
   padding: 0 20px;
   margin-bottom: 26px;
 }
-.overview-boxes .box{
+
+.AdminBox .box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -419,15 +407,11 @@ a {
   background: #fff;
   padding: 15px 14px;
   border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.home-section .home-content{
-  position: relative;
-  padding-top: 104px;
-}
 
-.home-content .overview-boxes{
+.Admins .AdminBox {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -436,75 +420,37 @@ a {
   margin-bottom: 26px;
 }
 
-.overview-boxes .box{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.AdminBox .box {
   width: calc(100% / 3 - 15px);
   background: #9e6240;
   padding: 15px 14px;
   border-radius: 30px;
-  box-shadow: 0px 6px 7px -4px rgba(0,0,0,0.2);
+  box-shadow: 0px 6px 7px -4px rgba(75, 72, 72, 0.2);
   font-size: 30px;
 }
 
-.overview-boxes .box:hover{
-  box-shadow: 0px 0px 8px 10px rgba(59,67,59,0.2);
+.AdminBox .box:hover {
+  box-shadow: 0px 0px 3px 5px rgba(18, 19, 18, 0.2);
   cursor: pointer;
 }
 
-.home-content .box .number{
-  display: inline-block;
-  font-size: 26px;
-  margin-top: -6px;
-  font-weight: 500;
+.Admins .box .number {
+  font-size: 25px;
 }
 
 * {
   box-sizing: border-box;
 }
 
-
-.card .indicator i{
-  height: 20px;
-  width: 20px;
-  background: #000000;
-  line-height: 20px;
-  text-align: center;
-  border-radius: 50%;
-  color: #ffffff;
-  font-size: 20px;
-  margin-left: 100px;
-  
-}
-
-.card{
-  display: flex;
-  flex-direction: column;
-  border-radius: 30px;
-  justify-content: space-around;
-  padding: 20px;
-  color: #1a1212;
-  box-shadow: 0px 6px 7px -4px rgba(0,0,0,0.2);
-  width: calc(100% / 3 - 15px);
-  background: #9e6240;
-}
-
-.card:hover{
-  box-shadow: 0px 0px 8px 10px rgba(59,67,59,0.2);
-  cursor: pointer;
-}
-
-.AdName .sales-details{
+.AdName .admin-inform{
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-
 .AdName .topic{
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .AdName .title{
@@ -517,30 +463,9 @@ a {
   margin: 8px 0;
 }
 
-.AdName .sales-details li a{
+.AdName .admin-inform li a{
   font-size: 18px;
-  color: #333;
- 
-  text-decoration: none;
-}
-
-
-
-.child {
-  display: inline-block;
-  width: 30%;
-  height: 400px;
-  background: #fff;
-  padding: 20px 30px;
-  margin: 0 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  overflow-x: scroll;
-  overflow-y: scroll;
-  padding: 1rem 1rem;
-  vertical-align: middle;
-  margin-bottom: 30px;
-  
+  color: #030303;
 }
 
 
@@ -549,7 +474,7 @@ a {
   margin: 0 20px;
   display: inline-block;
   width: 30%;
-  height: 400px;
+  height: 300px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -563,35 +488,12 @@ a {
 }
 
 
-.container {
+.adminRow {
   padding: 10px;
 }
-.container1 {
+.adminRow1 {
   padding: 10px;
 }
-.container3 {
+.adminRow3 {
   padding: 10px;
 }
-
-
-input:after {
-  color: #3399FF;
-  font-family: "Helvetica";
-  font-size: 10pt;
-  background-color: #ffffff;
-  border: 1px solid;
-  border-color: #3399FF;
-  border-radius: 3px;
-  top: 50px;
-  left: 50px;	
-  cursor: hand;
-   content: 'Ban';
-   
-}
-
-input:checked:after {
-  content: 'UnBan';
-}	
-
-
-
