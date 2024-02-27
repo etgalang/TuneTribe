@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moderator Dashboard</title>
+  <link rel="stylesheet" href="styleSheet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Boxicons CDN Link -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="adminRow">
+      <div class="navbar-menu">
+        <button title="btn" class="menu-btn"><i class="fas fa-bars"></i></button>
+        <div class="dropdown-content">
+          <a href="userProfile.html">Profile</a>
+          <a href="circle.html">Circle</a>
+          <a href="settings.html">Settings</a>
+          <a href="home.html">Home</a>
+        </div>
+      </div>
+      <h1 class="navHeader">Moderator Dashboard</h1>
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img src="images/TTLogo.png" alt="TuneTribe Logo">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="dashboard">
+    <div class="section-container">
+      <div class="section">
+        <h2>Delete Comment Section</h2>
+        <div class="comment-container">
+          <p class="comment">John Doe: Sugar Honey Ice Tea.</p>
+          <button class="action-btn">Delete</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Temporary Ban User(s)</h2>
+        <div class="user-container">
+          <a href="userProfile.html">
+            <img src="images/JohnDoe.png" alt="John Doe" class="user-img">
+            <p class="user">John Doe</p>
+          </a>
+          <button class="action-btn">Temporary Ban</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Limit Users Commenting</h2>
+        <div class="user-container">
+          <a href="userProfile.html">
+            <img src="images/JohnDoe.png" alt="John Doe" class="user-img">
+            <p class="user">John Doe</p>
+          </a>
+          <button class="action-btn">Limit Commenting</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Request Admin to Ban User</h2>
+        <div class="user-container">
+          <a href="userProfile.html">
+            <img src="images/JohnDoe.png" alt="John Doe" class="user-img">
+            <p class="user">John Doe</p>
+          </a>
+          <button class="action-btn">Send Ban Request</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Delete Post</h2>
+        <div class="post-container">
+          <p class="post">By John Doe: 
+          </p>
+          <p class="post">Oh Boy, This GUY STINKS!!!
+          </p>
+          <button class="action-btn">Delete</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

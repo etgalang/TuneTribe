@@ -1,3 +1,5 @@
+/* styleSheet.css */
+
 body {
   /* This aplies to the while page unless a specific tag is used, in this case the tag takes seniority*/
   background-color: #F8F2DC;
@@ -513,4 +515,50 @@ a {
 }
 .adminRow3 {
   padding: 10px;
+}
+
+
+/* Mod Dashboard Section */
+.dashboard .section {
+  width: calc(30% - 20px); /* Adjusting width */
+  margin-right: 20px; /* Adding margin */
+  padding: 20px; /* Adding padding */
+  background-color: #fff; /* Adding background color */
+  border-radius: 10px; /* Adding border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adding box shadow */
+  display: inline-block; /* Display as inline block */
+  vertical-align: top; /* Align to the top */
+}
+
+.section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-container,
+.comment-container,
+.post-container {
+  display: flex;
+  align-items: center;
+}
+
+.action-btn {
+  background-color: #9e6240;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.action-btn:hover {
+  background-color: #0056b3;
 }
