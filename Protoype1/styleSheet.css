@@ -2,7 +2,7 @@
 
 body {
   /* This aplies to the while page unless a specific tag is used, in this case the tag takes seniority*/
-  background-color: #F8F2DC;
+  background-color: #f8f3e3;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -561,4 +561,84 @@ a {
 
 .action-btn:hover {
   background-color: #0056b3;
+}
+
+
+/* login page */
+
+
+
+*.log {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+.logForm {
+  background-color: white;
+  width: 350px;
+  height: 500px;
+  padding: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logAdmin {
+  margin-left: 210px;
+  font-size: 30%;
+}
+
+.logBody {
+min-height: 100vh;
+}
+
+.logH1 {
+  font-family:cursive;
+  text-align: center;
+  margin-bottom: 45px;
+  color: black;
+}
+
+.text-boxLog {
+  border-bottom: 2px solid black;
+  position: relative;
+  margin: 35px 0;
+}
+
+.text-boxLog input {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: black;
+  height: 30px;
+}
+
+.logInbtn input {
+height: 45px;
+width: 100%;
+background-color: #F8F2DC;
+background-size: 200%;
+color: gray;
+font-size: 16px;
+}
+
+.logInbtn input:hover {
+  color: #000;
+}
+
+.signUp {
+  color: gray;
+  margin-top: 45px;
+  text-align: center;
+}
+
+.signUp a {
+  color: black;
+}
+
+.logH1 .signFont {
+  font-family: Arial, Helvetica, sans-serif;
 }
