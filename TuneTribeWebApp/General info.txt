@@ -1,0 +1,7 @@
+Important info about the webapp:
+
+- In the POM file, java version is currently set to 18
+
+- An SQL db with the name "tunetribedb" is needed
+
+- 
