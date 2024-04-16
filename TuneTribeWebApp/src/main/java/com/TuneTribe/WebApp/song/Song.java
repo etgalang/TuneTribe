@@ -32,5 +32,6 @@ public class Song {
     private String artist; //might have to store more than one in a string
     private String songName;
     private String coverArtUrl; //spotify provides url for cover of a track
+    private String spotifyId; //unique id provided by spotify api, needed for recommendations
     
 }

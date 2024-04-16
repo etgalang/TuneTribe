@@ -29,13 +29,11 @@ public class User {
     private int userId;
     
     private String userName;
-    private String name;
+    private String fName;
+    private String lName;
     private String email;
     private String password;
     
-    /*
-    * All the following are 
-    */
     private int following;
     private int follower;
     private int post;
@@ -46,11 +44,12 @@ public class User {
     //Same for top songs, access 3 different songs from songs db using the 3 stored id nums
     
     //Constructor for creating new User
-    public User (String userName, String email, String password, String name){ 
+    public User (String userName, String email, String password, String fName, String lName){ 
         this.userName = userName;
         this.email = email;
         this.password = password;
-        this.name = name;
+        this.fName = fName;
+        this.lName = lName;
     }
     
     //Do i need a contructor for when stuff is imported?

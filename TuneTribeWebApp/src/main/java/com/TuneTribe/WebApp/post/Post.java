@@ -35,7 +35,7 @@ public class Post {
     private String postDate;  
     //private String comment;
     
-    public Post (String caption, int songId){
+    public Post (String caption, int songId){ //New post constructor
         this.caption = caption;
         this.songId = songId;
     }
