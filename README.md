@@ -16,4 +16,5 @@ a positive user experience by managing comments and addressing any issues. Admin
 platform's operations and have the authority to ban users or artists if necessary.
 
 ![Use Case Diagram](https://github.com/etgalang/TuneTribe/blob/main/TuneTribe.png)
+![UML Case diagram)](https://github.com/etgalang/TuneTribe/assets/156261506/a5ba1357-02be-4d18-bdae-ab14f6fc11b6)
 
