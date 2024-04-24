@@ -4,13 +4,12 @@
  */
 package com.assign.TuneTribe.admin;
 
-import com.assign.TuneTribe.mod.Mod;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author shaun
+ * @author shauna
  */
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Long> {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author shaun
+ * @author shauna
  */
 @Service
 public class ModService {
@@ -25,10 +25,8 @@ public class ModService {
 
     public List<Mod> getMods() {
         List<Mod> allMods = repo.findAll();
-        return allMods.stream()
-                .filter(mod -> !mod.getRole().equals("Admin")) // Assuming "ROLE_ADMIN" is the role assigned to admin users
-                .collect(Collectors.toList());
-    }
+        return allMods;
+                }
 
     public Mod getMod(long id) {
         return repo.getReferenceById(id);

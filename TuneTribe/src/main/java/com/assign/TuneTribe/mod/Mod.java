@@ -24,15 +24,13 @@ public class Mod {
     private String modLName;
     private String modEmail;
     private String modPassword;
-    private String role;
-
-    public Mod(String userName, String modFName, String modLName, String modEmail, String modPassword, String role) {
+   
+    public Mod(String userName, String modFName, String modLName, String modEmail, String modPassword) {
         this.userName = userName;
         this.modFName = modFName;
         this.modLName = modLName;
         this.modEmail = modEmail;
-        this.modPassword = modPassword;
-        this.role = role;
+      
     }
 
     public Long getId() {
@@ -82,15 +80,6 @@ public class Mod {
     public void setModPassword(String modPassword) {
         this.modPassword = modPassword;
     }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     
     
 }

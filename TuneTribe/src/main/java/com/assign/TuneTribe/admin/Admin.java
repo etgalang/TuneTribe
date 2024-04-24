@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 /**
  *
- * @author shaun
+ * @author shauna
  */
 @Entity
 @Table(name = "admin")
@@ -24,8 +24,40 @@ public class Admin {
     private String adminUserName;
     private String adminEmail;
     private String adminPassword;
-    private String text;
+    private String role;
+    private String communityGuidelines;
+     private String copyright;
 
+    public String getCopyright() {
+        return copyright;
+    }
+
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
+    }
+     
+     
+
+    public String getCommunityGuidelines() {
+        return communityGuidelines;
+    }
+
+    public void setCommunityGuidelines(String communityGuidelines) {
+        this.communityGuidelines = communityGuidelines;
+    }
+    
+    
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    
+    
     public Long getAdminId() {
         return adminId;
     }
@@ -58,12 +90,6 @@ public class Admin {
         this.adminPassword = adminPassword;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
+  
 
 }
