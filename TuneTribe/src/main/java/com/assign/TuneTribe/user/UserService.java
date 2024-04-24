@@ -1,10 +1,6 @@
 package com.assign.TuneTribe.user;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +16,15 @@ public class UserService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
-
-
-
+   
+    
+  public void registerUser(User user) {
+        user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
+        repo.save(user);
+    }
+  
+   public void saveUser(User user) {
+        user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
+        repo.save(user);
+    }
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author shaun
+ * @author shauna
  */
 @Repository
 public interface ModRepository extends JpaRepository<Mod, Long> {

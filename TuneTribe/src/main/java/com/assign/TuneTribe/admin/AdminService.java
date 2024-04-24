@@ -13,41 +13,49 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author shaun
+ * @author shauna
  */
 @Service
 public class AdminService {
 
     @Autowired
     private AdminRepository adminRepository;
-    
-        @Autowired
+
+    @Autowired
     ModRepository repo;
-        
-            @Autowired
+
+    @Autowired
     UserRepository userRepo;
-
-    public void saveCommunityGuidelines(String guidelinesText) {
-        Admin guidelines = new Admin();
-        guidelines.setText(guidelinesText);
-        adminRepository.save(guidelines);
-    }
-    
-    public List<User> getUsers() {
-        List<User> allUsers = userRepo.findAll();
-        return allUsers.stream()
-                .filter(user -> !user.getRole().equals("Admin"))
-               .collect(Collectors.toList());
-    }
-
- 
 
     public User getUser(long id) {
         return userRepo.getReferenceById(id);
     }
 
-    public void deleteUser(long id) {
-        userRepo.deleteById(id);
+    public List<User> getUsers() {
+        List<User> allUsers = userRepo.findAll();
+        return allUsers.stream()
+                .filter(user -> !user.getRole().equals("Admin"))
+                .filter(user -> !user.getRole().equals("Mod"))
+                .filter(user -> !user.getRole().equals("Artist"))
+                .collect(Collectors.toList());
+    }
+
+    public List<User> getArtists() {
+        List<User> allUsers = userRepo.findAll();
+        return allUsers.stream()
+                .filter(user -> !user.getRole().equals("Admin"))
+                .filter(user -> !user.getRole().equals("Mod"))
+                .filter(user -> !user.getRole().equals("User"))
+                .collect(Collectors.toList());
+    }
+
+    public List<User> getMods() {
+        List<User> allUsers = userRepo.findAll();
+        return allUsers.stream()
+                .filter(user -> !user.getRole().equals("Admin"))
+                .filter(user -> !user.getRole().equals("Artist"))
+                .filter(user -> !user.getRole().equals("User"))
+                .collect(Collectors.toList());
     }
 
     public User getUserByUserName(String userName) {
@@ -68,4 +76,39 @@ public class AdminService {
         return userOptional.map(User::isBanned).orElse(false);
     }
 
+    public void deleteUser(long id) {
+        userRepo.deleteById(id);
+    }
+
+    public void saveCommunityGuidelines(String guidelinesText) {
+        Admin admin = adminRepository.findById(1L).orElse(new Admin()); // Assuming there's only one admin
+        admin.setCommunityGuidelines(guidelinesText);
+        adminRepository.save(admin);
+    }
+
+    public String getCommunityGuidelines() {
+        return adminRepository.findById(1L)
+                .map(Admin::getCommunityGuidelines)
+                .orElse("");
+    }
+
+    public void saveCopyRight(String copyrightText) {
+        Admin admin = adminRepository.findById(1L).orElse(new Admin()); // Assuming there's only one admin
+        admin.setCopyright(copyrightText);
+        adminRepository.save(admin);
+    }
+
+    public String getCopyRight() {
+        return adminRepository.findById(1L)
+                .map(Admin::getCopyright)
+                .orElse("");
+    }
+
+    public long getTotalUsers() {
+        return userRepo.count(); // Count all users in the repository
+    }
+
+    public List<Mod> getAllRequests() {
+        return repo.findAll();
+    }
 }

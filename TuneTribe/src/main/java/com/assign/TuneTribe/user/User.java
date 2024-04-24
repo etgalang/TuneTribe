@@ -19,7 +19,6 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class User {
 
     @Id
@@ -34,8 +33,8 @@ public class User {
     private String role;
 
 
-    public User(String userName, String userEmail, boolean banned, String userPassword, String userFName, String userLName, String role) {
-        this.userName = userName;
+    public User(String username, String userEmail, boolean banned, String userPassword, String userFName, String userLName, String role) {
+        this.userName = username;
         this.userEmail = userEmail;
         this.banned = banned;
         this.userPassword = userPassword;
@@ -43,6 +42,7 @@ public class User {
         this.userLName = userLName;
         this.role = role;
     }
+    
 
     public String getRole() {
         return role;
@@ -52,7 +52,6 @@ public class User {
         this.role = role;
     }
 
-    
     
     public String getUserFName() {
         return userFName;
