@@ -37,6 +37,48 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <!--<a th:href="@{/user/id={id}(id=${user.id})}" th:text=" ${user.id}" > </a>-->
             <p>Lets go to your <a th:href="@{/user/myProfile={username}(username=${currentUser})}">profile page</a></p>
         </h5>
+
+        <!-- Bootstrap POST LIST START -->
+
+        <div class="container">
+
+            <h1 style="text-align:center;">Post List</h1>
+
+            <div style="align-content: center;">
+                <p class="my-5">
+                    <!--<a href="/post/newpost class="btn btn-primary" >Create Post</a>-->
+                </p>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>userId</th>
+                            <th>caption</th>
+                            <th>postDate</th>
+                            <th>songId</th>
+                            <th>likeCount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="post : ${postList}">
+                            <td> <a th:href="@{/post/id={id}(id=${post.postId})}" th:text=" ${post.postId}" > </a></td>                           
+                            <td th:text=" ${post.userId}"></td>
+                            <td th:text=" ${post.caption}"></td>
+                            <td th:text=" ${post.PostDate}"></td>
+                            <td th:text=" ${post.songId}"></td>
+                            <td th:text=" ${post.likeCount}"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+            </div>
+
+
+        </div>
+
+        <!--POST LIST END-->
         
         
         
