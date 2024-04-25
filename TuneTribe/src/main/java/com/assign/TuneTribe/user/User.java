@@ -31,6 +31,7 @@ public class User {
     private boolean banned = false;
     private String userPassword;
     private String role;
+    private int topSong;
 
 
     public User(String username, String userEmail, boolean banned, String userPassword, String userFName, String userLName, String role) {
@@ -41,6 +42,19 @@ public class User {
         this.userFName = userFName;
         this.userLName = userLName;
         this.role = role;
+        
+    }
+    
+    //will be used for profile
+    public User(long id, String username, String userEmail, String userPassword, String userFName, String userLName, String role, int topSong) {
+        this.id = id;
+        this.userName = username;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.userFName = userFName;
+        this.userLName = userLName;
+        this.role = role;
+        this.topSong = topSong; //will link to a table?
     }
     
 
@@ -108,6 +122,15 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+    
+    //need 3 parameters, table corresponding to user, song num to replace, and song
+    public void setTopSong(){  
+        
+    }
+    
+    public void getTopSong (){ //return table
+        
     }
 
     
