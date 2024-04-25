@@ -28,8 +28,8 @@ public class UserServ {
      * @param id
      * @return the user
      */
-    public User getUser(long id) {
-        return repo.getUserById(id);
+    public User getUser(String username) {
+        return repo.getUserByUsername(username);
     }
     
      /**

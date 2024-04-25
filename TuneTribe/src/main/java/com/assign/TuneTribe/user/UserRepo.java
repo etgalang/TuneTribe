@@ -35,13 +35,13 @@ public class UserRepo {
                         result.getInt("top_song")));
     }
     
-    public User getUserById(long id) {
+    public User getUserByUsername(String username) {
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(
-                "id", id);
-        String query = "select * from user where id=:id ";
+                "user_name", username); //not working
+        String query = "SELECT * FROM user WHERE user_name=:user_name";
         return template.queryForObject(query, namedParameters,
                 BeanPropertyRowMapper.newInstance(User.class));
-    }
+    }//
     
     /*
     public int saveUser(User user) {

@@ -21,6 +21,12 @@ public class UserController {
     @Autowired
     private UserServ service;
     
+    @GetMapping({"/", "","/home"}) //we need user info and post info here
+    public String homePage (Model model) {
+        //model.addAttribute("user", service.getAllUsers());
+        return "/user";
+    }
+  
     @GetMapping("/all")
     public String getAllUsers(Model model) {
         model.addAttribute("userList", service.getAllUsers());
@@ -32,9 +38,11 @@ public class UserController {
         return "user/user-createaccount";
     }
     
-    @GetMapping("/id={id}")
-    public String getUser(@PathVariable long id, Model model) {
-        model.addAttribute("user", service.getUser(id));
+    //this is for friends, not working yet
+    
+    @GetMapping("/username={username}")
+    public String getUser(@PathVariable String username, Model model) {
+        model.addAttribute("user", service.getUser(username));
         return "user/user-myprofile";
     }
     
