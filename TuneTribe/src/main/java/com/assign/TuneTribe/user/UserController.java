@@ -18,13 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
     
+    public static String currUser = null;
+    
     @Autowired
     private UserServ service;
     
     @GetMapping({"/", "","/home"}) //we need user info and post info here
     public String homePage (Model model) {
-        //model.addAttribute("user", service.getAllUsers());
-        return "/user";
+        model.addAttribute("user", service.getUser(currUser));
+        return "user/user-home";
     }
   
     @GetMapping("/all")
@@ -38,8 +40,19 @@ public class UserController {
         return "user/user-createaccount";
     }
     
-    //this is for friends, not working yet
+    @GetMapping("/myProfile={username}")
+    public String myProfile(@PathVariable String username,Model model){
+        if(currUser == null){
+            currUser = username;
+        }
+        else {
+            username = currUser;
+        }
+        model.addAttribute("user", service.getUser(username));
+        return "user/user-myprofile";
+    }
     
+    //this is for friends, not working yet   
     @GetMapping("/username={username}")
     public String getUser(@PathVariable String username, Model model) {
         model.addAttribute("user", service.getUser(username));

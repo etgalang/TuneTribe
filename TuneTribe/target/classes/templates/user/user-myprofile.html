@@ -19,7 +19,7 @@
                     <h5 class="card-title">User</h5>
                     <p class="card-text" th:text=" 'ID: '+ ${user.id}" />
                     <p class="card-text" th:text="'UserName: '+${user.userName}" />
-                    <p class="card-text" th:text="'Email: '+${user.email}" /> 
+                    <p class="card-text" th:text="'Email: '+${user.userEmail}" /> 
                     <div>
                         
                     </div>
@@ -27,7 +27,7 @@
 
                 </div>
             </div>
-            <a href="/user/all" class="btn btn-primary" >User List</a>
+            <a href="/user/home" class="btn btn-primary" >Home</a>
         </div>
     </body>
 </html>

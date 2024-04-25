@@ -3,7 +3,10 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html lang="en" data-bs-theme="auto">
+<html lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>  
         
         <meta charset="UTF-8">
@@ -21,14 +24,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 href="#"
                 class="navbar-brand mb-O h1">
                     <img src="..static/images/TTLogo.png"
-                         width="50" height="50" th:src="@{images/TTlogo.png}" />
-                    TuneTribe
+                         width="75" height="75" th:src="@{images/TTlogo.png}" />
+                    <h3>TuneTribe</h3>
             </a>
             
         </nav>
         <!-- Navbar END -->
 
-        Hi, User!
+        <h5>
+            <p>Welcome to TuneTribe</p>
+            <p th:text="${currentUser}"></p>
+            <!--<a th:href="@{/user/id={id}(id=${user.id})}" th:text=" ${user.id}" > </a>-->
+            <p>Lets go to your <a th:href="@{/user/myProfile={username}(username=${currentUser})}">profile page</a></p>
+        </h5>
         
         
         
