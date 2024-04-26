@@ -31,7 +31,7 @@ public class SongRepository {
     
     //spotify api start
     private static final String accessToken = 
-            "BQC0EVehrx-0Xu0ojseu_Cq_sIyRrWOvwnGTbYDEAgpucN4HJS6xN3pCuSgFaDb8kXQG3lho0s0G9o_C3E9s4rCfcIVwAfShZI3YZQ0JnuRSmczTs18";
+            "BQBF4GJiHjwoggqE3fGgixWHgmYxOKaC-NRcjjQIkm49HPC8MknTXv8sHlb9jo-JSk6KmU3InPBFSxHsWBGC09eNHcETqWf0cFGlC0-VbAlnkl2PXvI";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
@@ -54,8 +54,8 @@ public class SongRepository {
         return template.query(query,
                 (result, rowNum)
                 -> new Song(result.getLong("id"),
-                        result.getString("artist"), result.getString(
-                        "cover_url"), result.getString("name"), 
+                        result.getString("name"), result.getString(
+                        "artist"), result.getString("cover_url"), 
                         result.getString("spotify_id")));
     }
     

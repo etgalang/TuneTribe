@@ -1,10 +1,13 @@
 
 package com.assign.TuneTribe.user;
 
+import com.assign.TuneTribe.post.Post;
 import com.assign.TuneTribe.post.PostService;
 import com.assign.TuneTribe.song.Song;
 import com.assign.TuneTribe.song.SongService;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,12 +38,25 @@ public class UserController {
     
     @GetMapping({"/", "","/home"}) //we need user info and post info here
     public String homePage (Model model) {
+        /*
         model.addAttribute("user", service.getUser(currUser)); //add multiple attributes to a model?
         model.addAttribute("postList", pService.getAllPosts());
         model.addAttribute("songList", sService.getAllSongs());
+        */
         
         //take 2
+        List<Post> posts = pService.getAllPosts();
         List<Song> songs = sService.getAllSongs();
+        
+        //Next Create a map to associate a songId with a Song object
+        Map<Long, Song> songMap = new HashMap<>();
+        for (Song song: songs) {
+            songMap.put(song.getId(),song);
+        }
+        
+        model.addAttribute("user", service.getUser(currUser));
+        model.addAttribute("postList", posts);
+        model.addAttribute("songMap", songMap);
         return "user/user-home";
     }
   
