@@ -52,7 +52,7 @@ public class AppController {
                 System.out.println(auth.getDetails());//
                 //model.addAttribute("currentuser", id);
                 //System.out.println(name);
-                return "user";
+                return "user/user-home";
             }
         }
         return "redirect:/login"; // Redirect unauthenticated users to login page

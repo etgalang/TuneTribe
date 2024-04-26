@@ -31,11 +31,11 @@ public class PostRepository {
     
     List<Post> findAll() {
 
-        String query = "select post_id, user_id, caption, post_date, song_id, like_count from post";
+        String query = "select post_id, username, caption, post_date, song_id, like_count from post";
         return template.query(query,
                 (result, rowNum)
                 -> new Post(result.getLong("post_id"),
-                        result.getLong("user_id"), result.getString(
+                        result.getString("username"), result.getString(
                         "caption"), result.getDate("post_date"), 
                         result.getLong("song_id"), result.getInt("like_count")));
     }
@@ -50,12 +50,12 @@ public class PostRepository {
     
     public int savePost(Post post) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("user_id", post.getUserId());
+        paramMap.put("username", post.getUsername());
         paramMap.put("caption", post.getCaption());
         paramMap.put("post_date", post.getPostDate());
         paramMap.put("song_id", post.getSongId());
         paramMap.put("like_count", post.getLikeCount());
-        String query = "INSERT INTO post(user_id,caption,post_date,song_id,like_count)"
+        String query = "INSERT INTO post(username,caption,post_date,song_id,like_count)"
                 + " VALUES(:user_id, :caption, :post_date, :song_id, :like_count)";
         return template.update(query, paramMap);
     }

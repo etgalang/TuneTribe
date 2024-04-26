@@ -31,7 +31,7 @@ public class SongRepository {
     
     //spotify api start
     private static final String accessToken = 
-            "BQBP3XFfRUD4VxxfxM3ouNLjIYrVLYHjUS_u4EdxyQdS1KjoJQluTBRhesAyFpKBMJcfO0mT58IWZ_IATeSEn7p8IaFYQus4WyeRcltZGyxo1wK6PeA";
+            "BQC0EVehrx-0Xu0ojseu_Cq_sIyRrWOvwnGTbYDEAgpucN4HJS6xN3pCuSgFaDb8kXQG3lho0s0G9o_C3E9s4rCfcIVwAfShZI3YZQ0JnuRSmczTs18";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
@@ -43,7 +43,7 @@ public class SongRepository {
 //          .min_popularity(10)
 //          .seed_artists("0LcJLqbBmaGUft1e9Mm8HV")
 //          .seed_genres("electro")
-          .seed_tracks("0HPD5WQqrq7wPWR7P7Dw1i")
+          .seed_tracks("35xvhWIZMpsDcJxr14Ukbx")
 //          .target_popularity(20)
     .build();
   //spotify api end

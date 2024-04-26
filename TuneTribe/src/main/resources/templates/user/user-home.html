@@ -53,26 +53,66 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>userId</th>
+                            <th>username</th>
                             <th>caption</th>
                             <th>postDate</th>
-                            <th>songId</th>
                             <th>likeCount</th>
+                            
+                            <th>Artists</th>
+                            <th>songName</th>
+                            <th>AlbumArt</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="post : ${postList}">
                             <td> <a th:href="@{/post/id={id}(id=${post.postId})}" th:text=" ${post.postId}" > </a></td>                           
-                            <td th:text=" ${post.userId}"></td>
+                            <td th:text=" ${post.username}"></td>
                             <td th:text=" ${post.caption}"></td>
                             <td th:text=" ${post.PostDate}"></td>
-                            <td th:text=" ${post.songId}"></td>
                             <td th:text=" ${post.likeCount}"></td>
+                            <td th:text=" ${songList[post.songId].artist}"></td>
+                            <td th:text=" ${songList[post.songId].name}"></td>
+                            
+                            <td><img th:src="${songList[post.songId].coverUrl}" alt="AlbumArt" width="100" ></td>
+                            
                         </tr>
-
                     </tbody>
                 </table>
-                
+
+                <!--Take 2-->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>username</th>
+                            <th>caption</th>
+                            <th>postDate</th>
+                            <th>likeCount</th>
+                            
+                            <th>Artists</th>
+                            <th>songName</th>
+                            <th>AlbumArt</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="post : ${postList}">
+                            <td> <a th:href="@{/post/id={id}(id=${post.postId})}" th:text=" ${post.postId}" > </a></td>                           
+                            <td th:text=" ${post.username}"></td>
+                            <td th:text=" ${post.caption}"></td>
+                            <td th:text=" ${post.PostDate}"></td>
+                            <td th:text=" ${post.likeCount}"></td>
+                            <td th:text=" ${songList[post.songId].artist}"></td>
+                            <td th:text=" ${songList[post.songId].name}"></td>
+                            
+                            <td><img th:src="${songList[post.songId].coverUrl}" alt="AlbumArt" width="100" ></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                <!--Take 2 end-->
+
             </div>
 
 

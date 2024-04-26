@@ -2,7 +2,9 @@
 package com.assign.TuneTribe.user;
 
 import com.assign.TuneTribe.post.PostService;
+import com.assign.TuneTribe.song.Song;
 import com.assign.TuneTribe.song.SongService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +38,9 @@ public class UserController {
         model.addAttribute("user", service.getUser(currUser)); //add multiple attributes to a model?
         model.addAttribute("postList", pService.getAllPosts());
         model.addAttribute("songList", sService.getAllSongs());
+        
+        //take 2
+        List<Song> songs = sService.getAllSongs();
         return "user/user-home";
     }
   

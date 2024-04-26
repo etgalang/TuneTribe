@@ -1,6 +1,7 @@
 
 package com.assign.TuneTribe.post;
 
+import com.assign.TuneTribe.song.Song;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private long postId;
     
-    private long userId;
+    private String username;
     private String caption;
     private Date postDate;
     private long songId;
