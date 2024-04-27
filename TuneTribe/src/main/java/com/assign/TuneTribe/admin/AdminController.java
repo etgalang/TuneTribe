@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -8,6 +9,22 @@ import com.assign.TuneTribe.mod.Mod;
 import com.assign.TuneTribe.mod.ModService;
 import com.assign.TuneTribe.user.UserService;
 import java.util.List;
+=======
+package com.assign.TuneTribe.admin;
+
+
+import com.assign.TuneTribe.mod.Mod;
+import com.assign.TuneTribe.mod.ModService;
+import com.assign.TuneTribe.user.User;
+import com.assign.TuneTribe.user.UserRepository;
+import com.assign.TuneTribe.user.UserService;
+
+import java.security.Principal;
+import java.util.List;
+import java.util.Optional;
+
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +51,15 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+<<<<<<< HEAD
     @GetMapping("/user")
+=======
+
+    @Autowired
+    private UserRepository userRepo;
+
+ @GetMapping("/user")
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
     public String getUsers(Model model, @RequestParam(name = "continue", required = false) String cont) {
         model.addAttribute("userList", adminService.getUsers());
         return "admin/list-users";
@@ -87,6 +112,7 @@ public class AdminController {
         return "redirect:/admin/moderator";
     }
 
+<<<<<<< HEAD
     @GetMapping("/modRequests")
     public String viewRequests(Model model) {
         List<Mod> modRequests = adminService.getAllRequests(); // Assuming you have a service for managing mod requests
@@ -94,11 +120,24 @@ public class AdminController {
    
         return "admin/modRequests";
     }
+=======
+
+    @GetMapping("/modReport")
+    public String viewRequests(Model model) {
+        List<Mod> modReport = adminService.getAllRequests(); // Assuming you have a service for managing mod requests
+    model.addAttribute("modReport", modReport);
+   
+        return "admin/modReport";
+
+    
+ }
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 
     @GetMapping("/updates")
     public String getUpdatesForm(Model model) {
         return "admin/updates";
     }
+<<<<<<< HEAD
 
     @GetMapping("/community-guidelines")
     public String getCommunityGuidelinesForm(Model model) {
@@ -139,6 +178,64 @@ public class AdminController {
         model.addAttribute("copyright", copyright);
         return "admin/tunetribe-copyright";
     }
+=======
+ 
+
+
+@GetMapping("/community-guidelines")
+public String getCommunityGuidelinesForm(Model model, Principal principal) {
+    String guidelines = adminService.getCommunityGuidelines(principal);
+    model.addAttribute("guidelines", guidelines);
+    return "admin/community-guidelines-form";
+}
+
+@PostMapping("/save-community-guidelines")
+public String saveCommunityGuidelines(@RequestParam("guidelines") String guidelinesText, Principal principal) {
+    adminService.saveCommunityGuidelines(guidelinesText, principal);
+    return "redirect:/admin/community-guidelines";
+}
+
+@GetMapping("/tunetribe-guidelines")
+public String getTuneTribeGuidelines(Model model, Principal principal) {
+    String role = adminService.getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        String guidelines = adminService.getCommunityGuidelines(principal);
+        model.addAttribute("guidelines", guidelines);
+        return "admin/tunetribe-guidelines";
+    } else {
+        // Redirect or handle unauthorized access
+        return "redirect:/error";
+    }
+}
+
+@GetMapping("/copyright-rules")
+public String getCopyRightForm(Model model, Principal principal) {
+    String copyright = adminService.getCopyRight(principal);
+    model.addAttribute("copyright", copyright);
+    return "admin/copyright-form";
+}
+
+@PostMapping("/save-copyright-rules")
+public String saveCopyRight(@RequestParam("copyright") String copyrightText, Principal principal) {
+    adminService.saveCopyRight(copyrightText, principal);
+    return "redirect:/admin/copyright-rules";
+}
+
+@GetMapping("/tunetribe-copyright")
+public String getTuneTribeCopyright(Model model, Principal principal) {
+    String role = adminService.getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        String copyright = adminService.getCopyRight(principal);
+        model.addAttribute("copyright", copyright);
+        return "admin/tunetribe-copyright";
+    } else {
+        // Redirect or handle unauthorized access
+        return "redirect:/error";
+    }
+}
+
+
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 
     @GetMapping("/user/id={id}")
     public String getUserProfile(@PathVariable long id, Model model) {
@@ -147,3 +244,7 @@ public class AdminController {
     }
 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298

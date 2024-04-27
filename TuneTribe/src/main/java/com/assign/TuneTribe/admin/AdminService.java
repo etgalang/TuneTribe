@@ -4,6 +4,11 @@ import com.assign.TuneTribe.mod.Mod;
 import com.assign.TuneTribe.mod.ModRepository;
 import com.assign.TuneTribe.user.User;
 import com.assign.TuneTribe.user.UserRepository;
+<<<<<<< HEAD
+=======
+
+import java.security.Principal;
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,6 +32,11 @@ public class AdminService {
     @Autowired
     UserRepository userRepo;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
     public User getUser(long id) {
         return userRepo.getReferenceById(id);
     }
@@ -80,7 +90,11 @@ public class AdminService {
         userRepo.deleteById(id);
     }
 
+<<<<<<< HEAD
     public void saveCommunityGuidelines(String guidelinesText) {
+=======
+  /*   public void saveCommunityGuidelines(String guidelinesText) {
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
         Admin admin = adminRepository.findById(1L).orElse(new Admin()); // Assuming there's only one admin
         admin.setCommunityGuidelines(guidelinesText);
         adminRepository.save(admin);
@@ -91,8 +105,77 @@ public class AdminService {
                 .map(Admin::getCommunityGuidelines)
                 .orElse("");
     }
+<<<<<<< HEAD
 
     public void saveCopyRight(String copyrightText) {
+=======
+*/
+
+
+public String getCommunityGuidelines(Principal principal) {
+    String role = getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        Optional<User> adminUserOptional = userRepo.findByUserName(principal.getName());
+        return adminUserOptional.flatMap(adminUser ->
+                adminRepository.findByUser(adminUser).map(Admin::getCommunityGuidelines)
+        ).orElse("");
+    } else {
+        // Handle unauthorized access
+        return ""; // or throw an exception, redirect, etc.
+    }
+}
+
+public void saveCommunityGuidelines(String guidelinesText, Principal principal) {
+    String role = getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        Optional<User> adminUserOptional = userRepo.findByUserName(principal.getName());
+        adminUserOptional.ifPresent(adminUser -> {
+            Admin admin = adminRepository.findByUser(adminUser).orElse(new Admin());
+            admin.setUser(adminUser);
+            admin.setCommunityGuidelines(guidelinesText);
+            adminRepository.save(admin);
+        });
+    } else {
+        // Handle unauthorized access
+    }
+}
+
+// Utility method to fetch user role
+public String getUserRole(String username) {
+    Optional<User> userOptional = userRepo.findByUserName(username);
+    return userOptional.map(User::getRole).orElse(null);
+}
+
+public String getCopyRight(Principal principal) {
+    String role = getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        Optional<User> adminUserOptional = userRepo.findByUserName(principal.getName());
+        return adminUserOptional.flatMap(adminUser ->
+                adminRepository.findByUser(adminUser).map(Admin::getCopyright)
+        ).orElse("");
+    } else {
+        // Handle unauthorized access
+        return ""; // or throw an exception, redirect, etc.
+    }
+}
+
+public void saveCopyRight(String copyrightText, Principal principal) {
+    String role = getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        Optional<User> adminUserOptional = userRepo.findByUserName(principal.getName());
+        adminUserOptional.ifPresent(adminUser -> {
+            Admin admin = adminRepository.findByUser(adminUser).orElse(new Admin());
+            admin.setUser(adminUser);
+            admin.setCopyright(copyrightText);
+            adminRepository.save(admin);
+        });
+    } else {
+        // Handle unauthorized access
+    }
+}
+
+   /*  public void saveCopyRight(String copyrightText) {
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
         Admin admin = adminRepository.findById(1L).orElse(new Admin()); // Assuming there's only one admin
         admin.setCopyright(copyrightText);
         adminRepository.save(admin);
@@ -103,6 +186,10 @@ public class AdminService {
                 .map(Admin::getCopyright)
                 .orElse("");
     }
+<<<<<<< HEAD
+=======
+    */
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 
     public long getTotalUsers() {
         return userRepo.count(); // Count all users in the repository
@@ -111,4 +198,10 @@ public class AdminService {
     public List<Mod> getAllRequests() {
         return repo.findAll();
     }
+<<<<<<< HEAD
+=======
+    
+   
+
+>>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 }
