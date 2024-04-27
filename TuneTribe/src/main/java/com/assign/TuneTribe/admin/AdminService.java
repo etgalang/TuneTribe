@@ -4,11 +4,8 @@ import com.assign.TuneTribe.mod.Mod;
 import com.assign.TuneTribe.mod.ModRepository;
 import com.assign.TuneTribe.user.User;
 import com.assign.TuneTribe.user.UserRepository;
-<<<<<<< HEAD
-=======
 
 import java.security.Principal;
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,11 +29,8 @@ public class AdminService {
     @Autowired
     UserRepository userRepo;
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
     public User getUser(long id) {
         return userRepo.getReferenceById(id);
     }
@@ -90,11 +84,7 @@ public class AdminService {
         userRepo.deleteById(id);
     }
 
-<<<<<<< HEAD
-    public void saveCommunityGuidelines(String guidelinesText) {
-=======
   /*   public void saveCommunityGuidelines(String guidelinesText) {
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
         Admin admin = adminRepository.findById(1L).orElse(new Admin()); // Assuming there's only one admin
         admin.setCommunityGuidelines(guidelinesText);
         adminRepository.save(admin);
@@ -105,10 +95,6 @@ public class AdminService {
                 .map(Admin::getCommunityGuidelines)
                 .orElse("");
     }
-<<<<<<< HEAD
-
-    public void saveCopyRight(String copyrightText) {
-=======
 */
 
 
@@ -175,7 +161,6 @@ public void saveCopyRight(String copyrightText, Principal principal) {
 }
 
    /*  public void saveCopyRight(String copyrightText) {
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
         Admin admin = adminRepository.findById(1L).orElse(new Admin()); // Assuming there's only one admin
         admin.setCopyright(copyrightText);
         adminRepository.save(admin);
@@ -186,10 +171,7 @@ public void saveCopyRight(String copyrightText, Principal principal) {
                 .map(Admin::getCopyright)
                 .orElse("");
     }
-<<<<<<< HEAD
-=======
     */
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 
     public long getTotalUsers() {
         return userRepo.count(); // Count all users in the repository
@@ -198,10 +180,7 @@ public void saveCopyRight(String copyrightText, Principal principal) {
     public List<Mod> getAllRequests() {
         return repo.findAll();
     }
-<<<<<<< HEAD
-=======
     
    
 
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 }
