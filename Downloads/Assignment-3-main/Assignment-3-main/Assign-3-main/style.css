@@ -1,0 +1,58 @@
+.banner {
+    background-size: cover;
+    min-height: 60vh;
+    position: relative;
+    color: black;
+
+}
+
+.color-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 50px;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        min-height: 30vh;
+    }
+
+    h1 {
+        font-size: calc(1.5rem + 3.3vw);
+    }
+}
+
+.content {
+    margin-top: 150px;
+}
+
+.navbar-top {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-self: space-between;
+}
+
+.logo h3 {
+    font-weight: bold;
+}
+
+.main-content {
+    width: 100%;
+    height: 55vh;
+    background-image: url(./images/banner.jpg);
+    background-size: cover;
+    background-position: 70%;
+}
+
+.txt {
+    margin-top: 80px;
+    font-weight: bold;
+}
+
+.content h1 {
+    font-size: 70px;
+}
