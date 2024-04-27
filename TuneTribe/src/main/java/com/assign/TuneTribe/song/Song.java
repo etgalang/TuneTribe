@@ -32,11 +32,12 @@ public class Song {
     private String coverUrl;
     private String spotifyId;
     
+    /*
     public Song(long id, String name, String artist, String coverUrl, String spotifyId){
         this.id = id;
         this.name = name;
         this.artist= artist;
         this.coverUrl = coverUrl;
         this.spotifyId = spotifyId;
-    }
+    }*/
 }

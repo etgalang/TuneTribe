@@ -2,6 +2,7 @@
 package com.assign.TuneTribe.song;
 import jakarta.persistence.Entity;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -31,21 +32,9 @@ public class SongRepository {
     
     //spotify api start
     private static final String accessToken = 
-            "BQBF4GJiHjwoggqE3fGgixWHgmYxOKaC-NRcjjQIkm49HPC8MknTXv8sHlb9jo-JSk6KmU3InPBFSxHsWBGC09eNHcETqWf0cFGlC0-VbAlnkl2PXvI";
+            "BQChSuzbNzC6Byk6lR3TCvahFpmWFVcxL1YDOxhlRV19dyVm5o6FGQuGIL6dl6db3pChkvZdz3fKbYZ55rw7RY7vie3NEp6DnEUuRkRaAcVJ5cHLYNs";
 
-  private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-    .setAccessToken(accessToken)
-    .build();
-  private static final GetRecommendationsRequest getRecommendationsRequest = spotifyApi.getRecommendations()
-          .limit(1)
-//          .market(CountryCode.SE)
-//          .max_popularity(50)
-//          .min_popularity(10)
-//          .seed_artists("0LcJLqbBmaGUft1e9Mm8HV")
-//          .seed_genres("electro")
-          .seed_tracks("35xvhWIZMpsDcJxr14Ukbx")
-//          .target_popularity(20)
-    .build();
+ 
   //spotify api end
     
     List<Song> findAll() {
@@ -107,25 +96,48 @@ public class SongRepository {
     }
     
     Song recommendSong(){ //get a song id to seed recommendation
-        
+        String trackSeed = "35xvhWIZMpsDcJxr14Ukbx";
         try {
-            final Recommendations recommendations = getRecommendationsRequest.execute();
+             SpotifyApi spotifyApi = new SpotifyApi.Builder()
+                    .setAccessToken(accessToken)
+                    .build();
+            GetRecommendationsRequest getRecommendationsRequest = spotifyApi.getRecommendations()
+                    .limit(1)
+                    //          .market(CountryCode.SE)
+                    //          .max_popularity(50)
+                    //          .min_popularity(10)
+                    //          .seed_artists("0LcJLqbBmaGUft1e9Mm8HV")
+                    //          .seed_genres("electro")
+                    .seed_tracks(trackSeed)
+                    //          .target_popularity(20)
+                    .build();
+
+            Recommendations recommendations = getRecommendationsRequest.execute();
+            //end of spotify api and begin parsing of the information
             
             Song temp = new Song();
             String artist="";
             
             temp.setName(recommendations.getTracks()[0].getName().toString());
-            temp.setArtist(recommendations.getTracks()[0].getArtists()[0].getName());
+            for (int i = 0; i < recommendations.getTracks()[0].getArtists().length; i++ ){
+                artist += recommendations.getTracks()[0].getArtists()[i].getName() + ", ";
+            }
+            artist = artist.substring(0, artist.length()-2);
+            temp.setArtist(artist);
             temp.setSpotifyId(recommendations.getTracks()[0].getId().toString());
             temp.setCoverUrl(recommendations.getTracks()[0].getAlbum().getImages()[1].getUrl());
             
+            
+            //printing to system the song for test purposes
+            /*
             System.out.println(temp.getName());
             System.out.println(temp.getArtist());
             System.out.println(temp.getSpotifyId());
             System.out.println(temp.getCoverUrl());
-            
-            this.saveSong(temp);
-            return this.getSongByName(temp.getName());
+            */
+            //save song and return it to user by searching for the song
+            //this.saveSong(temp);
+            return temp;
             
             
 
@@ -133,15 +145,13 @@ public class SongRepository {
             System.out.println("Error: " + e.getMessage());
             return null;
         }
-
-
-        //use id of new song to send back
-        //SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(
-                //"id", id);
-        //String query = "select * from song where id=:id "; //we have spotify id
-        
-        //return template.queryForObject(query, namedParameters,
-                //BeanPropertyRowMapper.newInstance(Song.class));
     }
     
+    /*
+    String void getAccessToken(){
+        URL url = new URL(EndPoints.TOKEN);
+        
+        return "";
+    }
+    */
 }
