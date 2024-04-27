@@ -2,7 +2,6 @@
 package com.assign.TuneTribe.song;
 
 import java.util.List;
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +57,7 @@ public class SongService {
         repo.updateSong(song);
     }
     
-    public Song getRecommendation() throws JSONException{
+    public Song getRecommendation(){
         return repo.recommendSong();
 }
     
