@@ -12,7 +12,7 @@
 
             <div class="card-body">
                 
-                <div style="text-align: center; margin-top: 5px; font-size: 30px; font-family: cursive;" >Song Recommendation</div>
+                <div style="text-align: center; margin-top: 5px; font-size: 30px; font-family: cursive;" >Search Results</div>
                 <div class="form-group">
 
                     <p class = "card-text" th:text=" 'Name: '+ ${song.name}"  style="
@@ -42,10 +42,10 @@
 
                 </div>
                 <div style="text-align: center; margin-top: 20px;">
-                    <a th:href="@{/song/recommend}">New Recommendation</a></div>   <!--Will stop page from loading if key is not refreshed-->          
+                    <a th:href="@{/song/search}">New Search</a></div>   <!--Will stop page from loading if key is not refreshed-->          
                 <div>
                     <div style="text-align: center; margin-top: 20px;">
-                        <a th:href="@{/user/home}">Users</a>
+                        <a th:href="@{/user/home}">Home</a>
                     </div>
 
                 </div>

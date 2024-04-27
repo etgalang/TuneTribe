@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/song")
 public class SongController {
+    
+    String currUser = "";
     
     @Autowired
     private SongService service;
@@ -57,5 +60,17 @@ public class SongController {
         return "redirect:/user/all"; //need html
     }
     
+    @GetMapping("/search")
+    public String searchSong(Model model) {
+        
+        return "song/song-search-addsong"; //need html
+    }
     
+    @GetMapping("/submitsong")
+    public String searchSong(@RequestParam("song-name") String name,
+            @RequestParam("song-artist")String artist, Model model ) {
+        
+       model.addAttribute("song", service.searchSong(name + " " + artist));
+        return "song/song-search-display"; //need html
+    }    
 }

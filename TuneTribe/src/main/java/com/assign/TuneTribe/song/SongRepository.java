@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -16,8 +19,11 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Recommendations;
+import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.browse.GetRecommendationsRequest;
+import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
 
 
 /**
@@ -31,7 +37,7 @@ public class SongRepository {
     NamedParameterJdbcTemplate template;
     
     //spotify api start
-    private static final String accessToken = "BQAX8AfHY7lRHEG1PUUEJmwTIKCFkfWsGKOgudfMON1i1faMOKXssW8IUpB3WTWBpon1_xATuAqY67tGrzNwx9UqEFGyihQDKXdx6tCCso9fkuStfJg";
+    private static final String accessToken = "BQBax7r_v3LiWa2uN-EG8NqlxkSz022zqVy1riS95Y9IX0n6CEwAM8zMgp162eEgkSuFuLL1Tg64zSw44t0-FFhnlvT_i1H0grUpJ7lqP17k6Dlio4c";
 
     
     List<Song> findAll() {
@@ -142,5 +148,49 @@ public class SongRepository {
             System.out.println("Error: " + e.getMessage());
             return null;
         }
+    }
+    
+    
+    Song searchSong(String query) {
+        
+        SpotifyApi spotifyApi = new SpotifyApi.Builder()
+                .setAccessToken(accessToken)
+                .build();
+        SearchTracksRequest searchTracksRequest = spotifyApi.searchTracks(query)
+                .limit(1)
+                .build();
+        
+        Song temp = new Song();
+        String artist="";
+        
+        
+        try {
+            CompletableFuture<Paging<Track>> pagingFuture = searchTracksRequest.executeAsync();
+            Paging<Track> trackPaging = pagingFuture.join();
+            
+            temp.setName(trackPaging.getItems()[0].getName());
+            temp.setCoverUrl(trackPaging.getItems()[0].getAlbum().getImages()[1].getUrl());
+            temp.setSpotifyId(trackPaging.getItems()[0].getId().toString());
+            
+            for (int i = 0; i < trackPaging.getItems()[0].getArtists().length; i++ ){
+                artist += trackPaging.getItems()[0].getArtists()[i].getName() + ", ";
+            }
+            artist = artist.substring(0, artist.length()-2);  
+            temp.setArtist(artist);
+            
+            System.out.println("Song: " + temp.getName());
+            System.out.println("Artists: " + temp.getArtist());
+            System.out.println("Cover Url: " + temp.getCoverUrl());
+            System.out.println("SpotifyId: " + temp.getSpotifyId());
+
+            return temp;
+            
+        } catch (CompletionException e) {
+            System.out.println("Error: " + e.getCause().getMessage());
+        } catch (CancellationException e) {
+            System.out.println("Async operation cancelled.");
+        }
+
+        return null;
     }
 }

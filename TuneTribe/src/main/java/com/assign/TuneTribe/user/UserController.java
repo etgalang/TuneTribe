@@ -38,13 +38,7 @@ public class UserController {
     
     @GetMapping({"/", "","/home"}) //we need user info and post info here
     public String homePage (Model model) {
-        /*
-        model.addAttribute("user", service.getUser(currUser)); //add multiple attributes to a model?
-        model.addAttribute("postList", pService.getAllPosts());
-        model.addAttribute("songList", sService.getAllSongs());
-        */
         
-        //take 2
         List<Post> posts = pService.getAllPosts();
         List<Song> songs = sService.getAllSongs();
         

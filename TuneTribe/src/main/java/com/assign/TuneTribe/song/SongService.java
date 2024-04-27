@@ -61,4 +61,8 @@ public class SongService {
         return repo.recommendSong();
 }
     
+    public Song searchSong(String query){      
+        return repo.searchSong(query);
+    }
+    
 }

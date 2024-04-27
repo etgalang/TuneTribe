@@ -50,8 +50,6 @@ public class AppController {
                 String name = auth.getName();
                 model.addAttribute("currentUser", name); //returns username
                 System.out.println(auth.getDetails());//
-                //model.addAttribute("currentuser", id);
-                //System.out.println(name);
                 return "user/user-home";
             }
         }
