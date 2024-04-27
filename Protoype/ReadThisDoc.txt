@@ -1,0 +1,58 @@
+The Last part of this document is the required part of each page, copying that code and pasting it into a new blank html page will give the 
+    new page the styling of our current pages. This includes colors, centered feed, and navigation bar.
+
+Describe any progress you have made, any question or anything you need help with here.
+
+TO-DO:
+    -Create:
+        -ADMIN PAGE
+        -HOME PAGE(Where the feed will be)
+        -LOG IN PAGE
+
+Mauricio:
+    -Stying for all pages no relies on one css document, we also now have one consisten theme
+    -The colors for the website are still not set, feel free to try and find a better combination
+    -profile page is nearly done
+
+
+
+
+
+
+
+############################################################################################################################################
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuneTribe</title>
+    <link rel="stylesheet" href="styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    
+<nav class="navbar">
+        <div class="adminRow">
+            <div class="navbar-menu">
+                <button class="menu-btn"><i class="fas fa-bars"></i></button>
+                <div class="dropdown-content">
+                    <a href="profile.html">Profile</a>
+                    <a href="index.html">Home Feed</a>
+                    <a href="admin.html">Admin Page</a>
+                </div>
+            </div>
+            <h1 class="navHeader">PAGE NAME</h1> <!-- REPLACE WITH CURRENT PAGE NAME -->
+            <div class="navbar-logo">
+                <a href="index.html">
+                    <img src="images/TTLogo.png" alt="TuneTribe Logo">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <!--ALL CONTENT GOES HERE-->
+    </main>
+</body>
+</html>
