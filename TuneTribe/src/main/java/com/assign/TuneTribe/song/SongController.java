@@ -1,6 +1,7 @@
 
 package com.assign.TuneTribe.song;
 
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +47,7 @@ public class SongController {
     }
     
     @GetMapping("/recommend")
-    public String getRecommendation(Model model) {
+    public String getRecommendation(Model model) throws JSONException {
         model.addAttribute("song", service.getRecommendation());
         return "song/song-recommend"; //need html
     }

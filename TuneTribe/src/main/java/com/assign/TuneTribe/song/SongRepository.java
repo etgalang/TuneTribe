@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import org.apache.hc.core5.http.ParseException;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -30,12 +31,7 @@ public class SongRepository {
     @Autowired
     NamedParameterJdbcTemplate template;
     
-    //spotify api start
-    private static final String accessToken = 
-            "BQChSuzbNzC6Byk6lR3TCvahFpmWFVcxL1YDOxhlRV19dyVm5o6FGQuGIL6dl6db3pChkvZdz3fKbYZ55rw7RY7vie3NEp6DnEUuRkRaAcVJ5cHLYNs";
-
- 
-  //spotify api end
+    private static String accessToken = "BQCdg8CCnE9fB1-T-DdnHPgyyM5rE4ghLHhMGL-SDJwSWjmasQxzwV_zP5yn7tgdKxiLsCqk_rB_iMn2z5YmnEfpcrWxmM7_DmbNABla3i4cFs0SHm0";
     
     List<Song> findAll() {
 
@@ -95,7 +91,7 @@ public class SongRepository {
         
     }
     
-    Song recommendSong(){ //get a song id to seed recommendation
+    Song recommendSong() throws JSONException{ //get a song id to seed recommendation
         String trackSeed = "35xvhWIZMpsDcJxr14Ukbx";
         try {
              SpotifyApi spotifyApi = new SpotifyApi.Builder()
@@ -145,13 +141,20 @@ public class SongRepository {
             System.out.println("Error: " + e.getMessage());
             return null;
         }
-    }
+    }    
     
-    /*
-    String void getAccessToken(){
-        URL url = new URL(EndPoints.TOKEN);
+    String getAccessToken() throws JSONException{
         
-        return "";
+        SpotifyToken token = new SpotifyToken();
+        String accessToken = "";
+        
+        try {
+            accessToken = token.getAcessToken();
+        
+        } catch (IOException e) {
+            System.out.println("ERROR FETCHIN ACCESSTOKEN");
+            e.printStackTrace(); 
+        }
+        return accessToken;
     }
-    */
 }

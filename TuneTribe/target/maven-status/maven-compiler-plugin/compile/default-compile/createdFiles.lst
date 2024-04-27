@@ -19,7 +19,9 @@ com\assign\TuneTribe\artist\Artist.class
 com\assign\TuneTribe\post\Post.class
 com\assign\TuneTribe\song\SongRepository.class
 com\assign\TuneTribe\admin\Admin.class
+com\assign\TuneTribe\song\EndPoints.class
 com\assign\TuneTribe\admin\AdminService.class
+com\assign\TuneTribe\song\SpotifyToken.class
 com\assign\TuneTribe\user\UserServ.class
 com\assign\TuneTribe\user\CustomUserDetailsSerivce.class
 com\assign\TuneTribe\song\Song.class
