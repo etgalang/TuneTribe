@@ -4,6 +4,7 @@
  */
 package com.assign.TuneTribe.admin;
 
+<<<<<<< HEAD
 
 import com.assign.TuneTribe.mod.Mod;
 import com.assign.TuneTribe.mod.ModService;
@@ -16,6 +17,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+=======
+import com.assign.TuneTribe.mod.Mod;
+import com.assign.TuneTribe.mod.ModService;
+import com.assign.TuneTribe.user.UserService;
+import java.util.List;
+>>>>>>> 28836a7e4e028a2a96636e27126d413f5c78541c
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,9 +49,12 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+<<<<<<< HEAD
     @Autowired
     private UserRepository userRepo;
 
+=======
+>>>>>>> 28836a7e4e028a2a96636e27126d413f5c78541c
     @GetMapping("/user")
     public String getUsers(Model model, @RequestParam(name = "continue", required = false) String cont) {
         model.addAttribute("userList", adminService.getUsers());
@@ -98,19 +108,32 @@ public class AdminController {
         return "redirect:/admin/moderator";
     }
 
+<<<<<<< HEAD
     @GetMapping("/modReport")
     public String viewRequests(Model model) {
         List<Mod> modReport = adminService.getAllRequests(); // Assuming you have a service for managing mod requests
     model.addAttribute("modReport", modReport);
    
         return "admin/modReport";
+=======
+    @GetMapping("/modRequests")
+    public String viewRequests(Model model) {
+        List<Mod> modRequests = adminService.getAllRequests(); // Assuming you have a service for managing mod requests
+    model.addAttribute("modRequests", modRequests);
+   
+        return "admin/modRequests";
+>>>>>>> 28836a7e4e028a2a96636e27126d413f5c78541c
     }
 
     @GetMapping("/updates")
     public String getUpdatesForm(Model model) {
         return "admin/updates";
     }
+<<<<<<< HEAD
 /* 
+=======
+
+>>>>>>> 28836a7e4e028a2a96636e27126d413f5c78541c
     @GetMapping("/community-guidelines")
     public String getCommunityGuidelinesForm(Model model) {
         String guidelines = adminService.getCommunityGuidelines();
@@ -130,6 +153,7 @@ public class AdminController {
         model.addAttribute("guidelines", guidelines);
         return "admin/tunetribe-guidelines";
     }
+<<<<<<< HEAD
 */
 
 
@@ -187,6 +211,10 @@ public String getTuneTribeCopyright(Model model, Principal principal) {
 
 
  /*    @GetMapping("/copyright-rules")
+=======
+
+    @GetMapping("/copyright-rules")
+>>>>>>> 28836a7e4e028a2a96636e27126d413f5c78541c
     public String getCopyRightForm(Model model) {
         String copyright = adminService.getCopyRight();
         model.addAttribute("copyright", copyright);
@@ -197,14 +225,24 @@ public String getTuneTribeCopyright(Model model, Principal principal) {
     public String saveCopyRight(@RequestParam("copyright") String copyrightText) {
         adminService.saveCopyRight(copyrightText);
         return "redirect:/admin/copyright-rules";
+<<<<<<< HEAD
     } */
 
   /*  @GetMapping("/tunetribe-copyright")
+=======
+    }
+
+    @GetMapping("/tunetribe-copyright")
+>>>>>>> 28836a7e4e028a2a96636e27126d413f5c78541c
     public String getTuneTribeCopyright(Model model) {
         String copyright = adminService.getCopyRight();
         model.addAttribute("copyright", copyright);
         return "admin/tunetribe-copyright";
+<<<<<<< HEAD
     } */
+=======
+    }
+>>>>>>> 28836a7e4e028a2a96636e27126d413f5c78541c
 
     @GetMapping("/user/id={id}")
     public String getUserProfile(@PathVariable long id, Model model) {
@@ -212,5 +250,8 @@ public String getTuneTribeCopyright(Model model, Principal principal) {
         return "admin/user-profile";
     }
 
+<<<<<<< HEAD
    
+=======
+>>>>>>> 28836a7e4e028a2a96636e27126d413f5c78541c
 }
