@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.assign.TuneTribe.admin;
-
-import com.assign.TuneTribe.mod.Mod;
-import com.assign.TuneTribe.mod.ModService;
-import com.assign.TuneTribe.user.UserService;
-import java.util.List;
-=======
 package com.assign.TuneTribe.admin;
 
 
@@ -24,7 +12,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,15 +38,11 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-<<<<<<< HEAD
-    @GetMapping("/user")
-=======
 
     @Autowired
     private UserRepository userRepo;
 
  @GetMapping("/user")
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
     public String getUsers(Model model, @RequestParam(name = "continue", required = false) String cont) {
         model.addAttribute("userList", adminService.getUsers());
         return "admin/list-users";
@@ -112,15 +95,6 @@ public class AdminController {
         return "redirect:/admin/moderator";
     }
 
-<<<<<<< HEAD
-    @GetMapping("/modRequests")
-    public String viewRequests(Model model) {
-        List<Mod> modRequests = adminService.getAllRequests(); // Assuming you have a service for managing mod requests
-    model.addAttribute("modRequests", modRequests);
-   
-        return "admin/modRequests";
-    }
-=======
 
     @GetMapping("/modReport")
     public String viewRequests(Model model) {
@@ -131,54 +105,11 @@ public class AdminController {
 
     
  }
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 
     @GetMapping("/updates")
     public String getUpdatesForm(Model model) {
         return "admin/updates";
     }
-<<<<<<< HEAD
-
-    @GetMapping("/community-guidelines")
-    public String getCommunityGuidelinesForm(Model model) {
-        String guidelines = adminService.getCommunityGuidelines();
-        model.addAttribute("guidelines", guidelines);
-        return "admin/community-guidelines-form";
-    }
-
-    @PostMapping("/save-community-guidelines")
-    public String saveCommunityGuidelines(@RequestParam("guidelines") String guidelinesText) {
-        adminService.saveCommunityGuidelines(guidelinesText);
-        return "redirect:/admin/community-guidelines";
-    }
-
-    @GetMapping("/tunetribe-guidelines")
-    public String getTuneTribeGuidelines(Model model) {
-        String guidelines = adminService.getCommunityGuidelines();
-        model.addAttribute("guidelines", guidelines);
-        return "admin/tunetribe-guidelines";
-    }
-
-    @GetMapping("/copyright-rules")
-    public String getCopyRightForm(Model model) {
-        String copyright = adminService.getCopyRight();
-        model.addAttribute("copyright", copyright);
-        return "admin/copyright-form";
-    }
-
-    @PostMapping("/save-copyright-rules")
-    public String saveCopyRight(@RequestParam("copyright") String copyrightText) {
-        adminService.saveCopyRight(copyrightText);
-        return "redirect:/admin/copyright-rules";
-    }
-
-    @GetMapping("/tunetribe-copyright")
-    public String getTuneTribeCopyright(Model model) {
-        String copyright = adminService.getCopyRight();
-        model.addAttribute("copyright", copyright);
-        return "admin/tunetribe-copyright";
-    }
-=======
  
 
 
@@ -235,7 +166,6 @@ public String getTuneTribeCopyright(Model model, Principal principal) {
 }
 
 
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
 
     @GetMapping("/user/id={id}")
     public String getUserProfile(@PathVariable long id, Model model) {
@@ -244,7 +174,5 @@ public String getTuneTribeCopyright(Model model, Principal principal) {
     }
 
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> fbe07ab22d812ffa7f86708cc768a82fe22b6298
+
