@@ -31,11 +31,8 @@ public class SongRepository {
     NamedParameterJdbcTemplate template;
     
     //spotify api start
-    private static final String accessToken = 
-            "BQChSuzbNzC6Byk6lR3TCvahFpmWFVcxL1YDOxhlRV19dyVm5o6FGQuGIL6dl6db3pChkvZdz3fKbYZ55rw7RY7vie3NEp6DnEUuRkRaAcVJ5cHLYNs";
+    private static final String accessToken = "BQAX8AfHY7lRHEG1PUUEJmwTIKCFkfWsGKOgudfMON1i1faMOKXssW8IUpB3WTWBpon1_xATuAqY67tGrzNwx9UqEFGyihQDKXdx6tCCso9fkuStfJg";
 
- 
-  //spotify api end
     
     List<Song> findAll() {
 
@@ -146,12 +143,4 @@ public class SongRepository {
             return null;
         }
     }
-    
-    /*
-    String void getAccessToken(){
-        URL url = new URL(EndPoints.TOKEN);
-        
-        return "";
-    }
-    */
 }
