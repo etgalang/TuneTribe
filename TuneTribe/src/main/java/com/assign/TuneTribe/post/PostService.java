@@ -1,6 +1,7 @@
 
 package com.assign.TuneTribe.post;
 
+import com.assign.TuneTribe.song.Song;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,8 +46,8 @@ public class PostService {
      * Save post entry. 
      * @param user 
      */
-    public void savePost(Post post) {
-        repo.savePost(post);
+    public void savePost(long id, String caption, String username) {
+        repo.savePost(id, caption, username);
     }
     
 }

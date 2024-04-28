@@ -61,15 +61,28 @@ button:hover {
     </style>
     <body>
         <div class="container">
-            <h1 Style="text-align: center; margin-top: 5px; margin-bottom: 50px; font-family: cursive;" >Song Search add SONG</h1>
-            <form id="song-search-form-add-song" action="/song/submitsong">
+            <h1 Style="text-align: center; margin-top: 5px; margin-bottom: 50px; font-family: cursive;" >Create Post</h1>
+            <form id="song-search-form-add-song" action="/post/create">
+
                 <div class="input-group">
-                    <label for="song-name">Song Name:</label>
-                    <input type="text" id="song-name" name="song-name" required>
+                    <label for="song-name" style="padding-right: 10px;" >Selected Song:</label>
+                    <input readonly type="Display" id="song-name" name="song-name" th:value="${song.name}">
+                    
                 </div>
                 <div class="input-group">
-                    <label for="artist-name">Artist:</label>
-                    <input type="text" id="song-artist" name="song-artist" required>
+                    <label for="song-artist" style="padding-right: 78px;">Artist:</label>
+                    <input readonly type="Display" id="song-artist" name="song-artist" th:value="${song.artist}">
+                </div>
+                
+                    <img th:src="@{${song.coverUrl}}"
+                            alt="AlbumArt" width="350" style="display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 50%; padding-bottom: 25px;">
+            
+                <div class="input-group">
+                    <label for="post-caption" style="padding-right: 60px;">Caption:</label>
+                    <input type="textbox" id="post-caption" name="post-caption">
                 </div>
                 
                 <button type="submit">Search</button>

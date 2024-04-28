@@ -1,7 +1,12 @@
 
 package com.assign.TuneTribe.song;
 
+
+import com.assign.TuneTribe.user.UserServ;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +23,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/song")
 public class SongController {
-    
-    String currUser = "";
+
+    String currUser = "Mau._.Wee";
+
     
     @Autowired
     private SongService service;
+    
+    @Autowired 
+    private UserServ uService;
     
     @GetMapping("/all")
     public String getAllSongs(Model model) {
@@ -48,22 +57,34 @@ public class SongController {
         return "song/song-info";
     }
     
-    @GetMapping("/recommend")
-    public String getRecommendation(Model model) {
+    @GetMapping("/recommend={username}")
+    public String getRecommendation(@PathVariable String username,Model model) {
+        if(currUser.isEmpty()){
+            currUser = username;
+        }
+        else {
+            username = currUser;
+        }
         model.addAttribute("song", service.getRecommendation());
         return "song/song-recommend"; //need html
     }
     
-    @GetMapping("/goback")
+    @GetMapping("/create")
     public String goToUser(Model model) {
         
-        return "redirect:/user/all"; //need html
+        return "redirect:/post/newpost"; //need html
     }
     
-    @GetMapping("/search")
-    public String searchSong(Model model) {
-        
-        return "song/song-search-addsong"; //need html
+    @GetMapping("/search={username}")
+    public String searchSong(@PathVariable String username,Model model) {
+        if(currUser.isEmpty()){
+            currUser = username;
+        }
+        else {
+            username = currUser;
+        }
+        model.addAttribute("user", uService.getUser(currUser));
+        return "song/song-search-createpost"; //need html
     }
     
     @GetMapping("/submitsong")
@@ -71,6 +92,7 @@ public class SongController {
             @RequestParam("song-artist")String artist, Model model ) {
         
        model.addAttribute("song", service.searchSong(name + " " + artist));
+       model.addAttribute("user", uService.getUser(currUser));
         return "song/song-search-display"; //need html
     }    
 }

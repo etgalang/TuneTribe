@@ -1,11 +1,19 @@
 
 package com.assign.TuneTribe.post;
+import com.assign.TuneTribe.song.Song;
 import jakarta.persistence.Entity;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -48,7 +56,26 @@ public class PostRepository {
                 BeanPropertyRowMapper.newInstance(Post.class));
     }
     
-    public int savePost(Post post) {
+    public int savePost(long id, String caption, String username) {
+        Post post = new Post();
+        Date date = null;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+         String sDate = dtf.format(now);
+        try {
+            date = formatter.parse(sDate);
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(PostRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        post.setUsername(username);
+        post.setCaption(caption);
+        post.setSongId(id);
+        post.setLikeCount(0);
+        post.setPostDate(date);
+        
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("username", post.getUsername());
         paramMap.put("caption", post.getCaption());
@@ -56,7 +83,7 @@ public class PostRepository {
         paramMap.put("song_id", post.getSongId());
         paramMap.put("like_count", post.getLikeCount());
         String query = "INSERT INTO post(username,caption,post_date,song_id,like_count)"
-                + " VALUES(:user_id, :caption, :post_date, :song_id, :like_count)";
+                + " VALUES(:username, :caption, :post_date, :song_id, :like_count)";
         return template.update(query, paramMap);
     }
     

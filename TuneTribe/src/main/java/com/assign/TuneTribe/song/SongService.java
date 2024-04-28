@@ -33,6 +33,10 @@ public class SongService {
         return repo.getSongById(id);
     }
     
+    public Song getSongByName(String name) {
+        return repo.getSongByName(name);
+    }
+    
     /**
      * Delete song by ID.
      * @param id 

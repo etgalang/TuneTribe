@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
     
-    public static String currUser="";
+    public static String currUser="Mau._.Wee";
     
     @Autowired 
     private UserServ service;
@@ -67,12 +67,13 @@ public class UserController {
     
     @GetMapping("/myProfile={username}")
     public String myProfile(@PathVariable String username,Model model){
+        /*
         if(currUser.isEmpty()){
             currUser = username;
         }
         else {
             username = currUser;
-        }
+        }*/
         model.addAttribute("user", service.getUser(username));
         return "user/user-myprofile";
     }
