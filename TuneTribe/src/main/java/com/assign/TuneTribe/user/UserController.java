@@ -65,8 +65,16 @@ public class UserController {
         return "user/user-createaccount";
     }
     
-    @GetMapping("/myProfile={username}")
-    public String myProfile(@PathVariable String username,Model model){
+    
+    @GetMapping ("/myProfile")
+    public String myProfile (Model model){
+        model.addAttribute("user", service.getUser(currUser));
+        return "user/user-myprofile";
+    }
+    
+    
+    //@GetMapping("/myProfile={username}")
+    //public String myProfile(@PathVariable String username,Model model){
         /*
         if(currUser.isEmpty()){
             currUser = username;
@@ -74,9 +82,10 @@ public class UserController {
         else {
             username = currUser;
         }*/
-        model.addAttribute("user", service.getUser(username));
-        return "user/user-myprofile";
-    }
+       // model.addAttribute("user", service.getUser(username));
+       //return "user/user-myprofile";
+    //}
+
     
     //this is for friends, not working yet   
     @GetMapping("/username={username}")

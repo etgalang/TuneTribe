@@ -57,14 +57,8 @@ public class SongController {
         return "song/song-info";
     }
     
-    @GetMapping("/recommend={username}")
-    public String getRecommendation(@PathVariable String username,Model model) {
-        if(currUser.isEmpty()){
-            currUser = username;
-        }
-        else {
-            username = currUser;
-        }
+    @GetMapping("/recommend")
+    public String getRecommendation(Model model) {
         model.addAttribute("song", service.getRecommendation());
         return "song/song-recommend"; //need html
     }
@@ -75,14 +69,9 @@ public class SongController {
         return "redirect:/post/newpost"; //need html
     }
     
-    @GetMapping("/search={username}")
-    public String searchSong(@PathVariable String username,Model model) {
-        if(currUser.isEmpty()){
-            currUser = username;
-        }
-        else {
-            username = currUser;
-        }
+    @GetMapping("/search")
+    public String searchSong(Model model) {
+        
         model.addAttribute("user", uService.getUser(currUser));
         return "song/song-search-createpost"; //need html
     }
