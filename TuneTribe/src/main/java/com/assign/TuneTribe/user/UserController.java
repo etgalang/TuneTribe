@@ -10,12 +10,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 /**
  *
@@ -24,9 +28,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
-    
-    public static String currUser="Mau._.Wee";
+public class UserController {    
+   
+    public static String currUser="";
     
     @Autowired 
     private UserServ service;
@@ -41,8 +45,8 @@ public class UserController {
     private TopSongsService tpService;
     
     @GetMapping({"/", "","/home"}) //we need user info and post info here
-    public String homePage (Model model) {
-        
+    public String homePage (@CurrentSecurityContext(expression="authentication?.name") String username, Model model) {
+        currUser = username;
         List<Post> posts = pService.getAllPosts();
         List<Song> songs = sService.getAllSongs();
         
@@ -71,7 +75,8 @@ public class UserController {
     
     
     @GetMapping ("/myProfile")
-    public String myProfile (Model model){
+    public String myProfile (@CurrentSecurityContext(expression="authentication?.name") String username, Model model){
+        currUser = username;
         List<Song> songs = sService.getAllSongs();
         model.addAttribute("user", service.getUser(currUser));
         model.addAttribute("songs", songs);
@@ -84,14 +89,8 @@ public class UserController {
     
     //@GetMapping("/myProfile={username}")
     //public String myProfile(@PathVariable String username,Model model){
-        /*
-        if(currUser.isEmpty()){
-            currUser = username;
-        }
-        else {
-            username = currUser;
-        }*/
-       // model.addAttribute("user", service.getUser(username));
+        
+      // model.addAttribute("user", service.getUser(username));
        //return "user/user-myprofile";
     //}
     
@@ -104,7 +103,7 @@ public class UserController {
         model.addAttribute("songs", songs);
         model.addAttribute("topSong", tpService.findByTopSongsById
         (service.getUser(currUser).getId()) );
-        return"redirect:/user/myProfile";
+        return"redirect:/song/search={songnum}";
     }
     
     

@@ -48,8 +48,13 @@ public class SecurityConfig {
                 .formLogin((form) -> form
                 .loginPage("/login")
                 .permitAll()
+<<<<<<< HEAD
                 .successHandler(successHandler()
                 ))
+=======
+                 .successHandler(successHandler()))
+                
+>>>>>>> 13e9d5f03becbb401e9bef24c4305af3ed123e34
                 .logout((logout) -> logout.permitAll())
                 .requestCache((cache) -> cache
                 .requestCache(requestCache)

@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SongController {
 
     String currUser = "Mau._.Wee";
+    int songNum;
 
     
     @Autowired
@@ -76,6 +77,13 @@ public class SongController {
         return "song/song-search-createpost"; //need html
     }
     
+    @GetMapping("/search={songnum}")
+    public String addSongSearch(@PathVariable int songnum, Model model) {
+        songNum = songnum;
+        model.addAttribute("user", uService.getUser(currUser));
+        return "song/song-search-addsong"; //need html
+    }
+    
     @GetMapping("/submitsong")
     public String searchSong(@RequestParam("song-name") String name,
             @RequestParam("song-artist")String artist, Model model ) {
@@ -84,4 +92,13 @@ public class SongController {
        model.addAttribute("user", uService.getUser(currUser));
         return "song/song-search-display"; //need html
     }    
+    
+    @GetMapping("/addSongSubmit")
+    public String addSongSearchSubmit(@RequestParam("song-name") String name,
+            @RequestParam("song-artist")String artist, Model model ) {
+        
+       model.addAttribute("song", service.searchSong(name + " " + artist));
+       model.addAttribute("user", uService.getUser(currUser));
+        return "song/song-search-display"; //need html
+    }   
 }

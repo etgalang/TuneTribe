@@ -242,7 +242,7 @@ body {
     <div id="dropdown-menu" class="dropdown-menu">
         <ul>
             <!--<li><a th:href="@{/user/myProfile={username}(username=${currentUser})}">My Profile</a></li>-->
-            <li><a th:href="@{/user/myProfile}">My Profile</a>
+            <li><a th:href="@{/user/home}">Home</a>
             <li><a href="/search-users">Search Users</a></li>
             <li><a th:href="@{/song/search}">Create Post</a></li>
             <li><a href="/tunetribe-guidelines">Community Guidelines</a></li>
@@ -273,7 +273,7 @@ body {
                 <div class="songs-triangle">
                     <!-- Triangle Top -->
                     <div class="song">
-                        <a th:href="@{/user/updateTopSong=1}"><img th:src="${songs[topSongs.songOne-1].coverUrl}"  alt="Album Art" class="album-art"></a>
+                        <a th:href="@{/song/search=1}"><img th:src="${songs[topSongs.songOne-1].coverUrl}"  alt="Album Art" class="album-art"></a>
                         <div class="song-info">
                             <h3 class="song-name" th:text="${songs[topSongs.songOne-1].name}"></h3>
                             <p class="song-artist" th:text="${songs[topSongs.songOne-1].artist}"></p>
@@ -282,14 +282,14 @@ body {
                     <!-- Triangle Base -->
                     <div class="song-row">
                         <div class="song">
-                            <a th:href="@{/user/updateTopSong=2}"><img th:src="${songs[topSongs.songTwo-1].coverUrl}"  alt="Album Art" class="album-art"></a>
+                            <a th:href="@{/song/search=2}"><img th:src="${songs[topSongs.songTwo-1].coverUrl}"  alt="Album Art" class="album-art"></a>
                             <div class="song-info">
                                 <h3 class="song-name" th:text="${songs[topSongs.songTwo-1].name}"></h3>
                                 <p class="song-artist" th:text="${songs[topSongs.songTwo-1].artist}"></p>
                             </div>
                         </div>
                         <div class="song">
-                            <a th:href="@{/user/updateTopSong=3}"><img th:src="${songs[topSongs.songThree-1].coverUrl}"  alt="Album Art" class="album-art"></a>
+                            <a th:href="@{/song/search=3}"><img th:src="${songs[topSongs.songThree-1].coverUrl}"  alt="Album Art" class="album-art"></a>
                             <div class="song-info">
                                 <h3 class="song-name" th:text="${songs[topSongs.songThree-1].name}"></h3>
                                 <p class="song-artist" th:text="${songs[topSongs.songThree-1].artist}"></p>

@@ -63,4 +63,10 @@ public class PostController {
         return "post/post-viewPost";
     }
     
+    @GetMapping("/report")
+    public String reportPost (){
+        
+        return "mod/report";
+    }
+    
 }

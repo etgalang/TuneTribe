@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderator Dashboard</title>
+    <link rel="stylesheet" href="styleMod.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Moderator Dashboard</h1>
+        <div id="reports"></div>
+        <h2>Declined Reports</h2>
+        <div id="declinedReports"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchReports();
+        });
+
+        function fetchReports() {
+            fetch('/get-reports')
+            .then(response => response.json())
+            .then(data => {
+                const reportsContainer = document.getElementById("reports");
+                reportsContainer.innerHTML = '';
+                data.forEach(report => {
+                    const reportDiv = document.createElement("div");
+                    reportDiv.className = 'report';
+                    reportDiv.innerHTML = `
+                        <p><strong>By:</strong> ${report.userName}</p>
+                        <p><strong>Reported:</strong> ${report.reportedUser}</p>
+                        <p><strong>Reason:</strong> ${report.explanation}</p>
+                        <p><strong>Type:</strong> ${report.type}</p>
+                        <button onclick="handleDecline(${report.id})">Decline</button>
+                        <button onclick="handleAccept(${report.id})">Push to Admin</button>
+                    `;
+                    reportsContainer.appendChild(reportDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching reports:', error));
+        }
+
+        function handleDecline(reportId) {
+            // Implement the decline functionality
+        }
+
+        function handleAccept(reportId) {
+            // Implement the accept functionality
+        }
+    </script>
+</body>
+</html>
