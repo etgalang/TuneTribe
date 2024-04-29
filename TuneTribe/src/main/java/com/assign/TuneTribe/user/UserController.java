@@ -104,7 +104,7 @@ public class UserController {
         model.addAttribute("songs", songs);
         model.addAttribute("topSong", tpService.findByTopSongsById
         (service.getUser(currUser).getId()) );
-        return"redirect:/user/myProfile";
+        return"redirect:/song/search={songnum}";
     }
     
     
