@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuneTribe</title>
+    <link rel="stylesheet" href="../styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
+        integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+</head>
+
+<body>
+    <nav class="navbar columns is-fixed-top" role="navigation" aria-label="main navigation" id="app-header">
+        <div class="navbar-brand column is-2 is-paddingless">
+            <a class="navbar-item" href="myAdmin.html">
+                TuneTribe Admin
+            </a>
+
+        </div>
+
+        <div class="navbar-menu column is-hidden-touch">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+
+                        <img class="is-rounded" src="../images/avatar-15.png">
+
+                        &nbsp; Admin
+                    </a>
+                    <div class="navbar-dropdown">
+
+
+                        <hr class="navbar-divider">
+                        <a class="navbar-item logout">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="columns" id="adminInfo">
+        <div class="column is-2 is-fullheight is-hidden-touch" id="sidebar">
+            <aside class="menu">
+
+                <ul class="menu-list">
+                    <li>
+                        <a class="is-active" href="myAdmin.html">
+                            Admin Page
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="" href="userAdmin.html">
+                            User
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="artistAdmin.html">
+                            Artist
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="artPermAdmin.html">
+                            Artist Permissions
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="modAdmin.html">
+                            Moderator Permissions
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="modRequest.html">
+                            Request
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="updateAdmin.html">
+                            Update 
+                        </a>
+                    </li>
+                </ul>
+
+
+            </aside>
+        </div>
+
+        <div class="column is-10" id="page-content">
+            <div class="content-header">
+                <h4 class="title is-4">User List</h4>
+                <span class="separator"></span>
+
+            </div>
+
+
+            <div class="listAdmin">
+                <div>
+                    <input class="input" id="table-search" type="text" placeholder="Search for artists...">
+
+                </div>
+                <div class="card-content">
+                    <table class="table is-hoverable is-bordered is-fullwidth" id="datatable">
+                        <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Username</th>
+                                <th class="has-text-centered">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr>
+                                <td>1</td>
+                                <td>Anna Mane</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+                                        <button style="margin-right: 16px">Ban</button>
+                                      
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td>2</td>
+                                <td>John Celt</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                      
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Trinity Monty</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Lesley Peter</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>India Yon</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                       
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Ren Sant</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                      
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Prem Kelsey</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Tony Montgomery</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                      
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Liam Orr</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                       
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Josh Tony</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+                                        <button style="margin-right: 16px">Ban</button>
+                                      
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>William Hash</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Ben Peters</td>
+                                <td class="has-text-centered">
+                                    <div class="actionBtn">
+
+                                        <button style="margin-right: 16px">Ban</button>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>                    
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
+            integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+            <script>
+                $(document).ready(function () {
+                    var list = $('#datatable').DataTable({
+                        dom: "<'columns table-wrapper'<'column is-12'tr>><'columns table-footer-wrapper'<'column is-5'i><'column is-7'p>>"
+                    });
+    
+                    $('#table-search').on('keyup', function () {
+                        let  number= $(this).val();
+                        list.search(number).draw();
+                    });
+                });
+            </script>
+</body>
+
+</html>
