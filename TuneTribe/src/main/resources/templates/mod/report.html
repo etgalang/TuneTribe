@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Form</title>
+    <link rel="stylesheet" href="styleMod.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Report Form</h1>
+        <form id="reportForm">
+            <label for="userName">Your Name:</label>
+            <input type="text" id="userName" name="userName" required>
+
+            <label for="reportedUser">User You Are Reporting:</label>
+            <input type="text" id="reportedUser" name="reportedUser" required>
+
+            <label for="explanation">Explanation:</label>
+            <textarea id="explanation" name="explanation" required></textarea>
+
+            <div>
+                <label>Check all that apply:</label>
+                <label><input type="checkbox" name="reportType" value="Post"> Post</label>
+                <label><input type="checkbox" name="reportType" value="Profile"> Profile</label>
+                <label><input type="checkbox" name="reportType" value="Song"> Song</label>
+                <label><input type="checkbox" name="reportType" value="Other"> Other</label>
+            </div>
+
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("reportForm").onsubmit = function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/submit-report', {
+                method: 'POST',
+                body: new URLSearchParams(formData)
+            }).then(response => response.json())
+              .then(data => alert(data.message))
+              .catch(error => alert('Error submitting report.'));
+        };
+    </script>
+</body>
+</html>
