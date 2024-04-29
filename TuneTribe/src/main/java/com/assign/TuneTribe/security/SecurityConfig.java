@@ -51,8 +51,6 @@ public class SecurityConfig {
 
                 .successHandler(successHandler()
                 ))
-
-                 .successHandler(successHandler()))
                 
 
                 .logout((logout) -> logout.permitAll())
