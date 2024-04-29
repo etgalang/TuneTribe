@@ -4,6 +4,8 @@ import com.assign.TuneTribe.mod.Mod;
 import com.assign.TuneTribe.mod.ModRepository;
 import com.assign.TuneTribe.user.User;
 import com.assign.TuneTribe.user.UserRepository;
+
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,6 +28,8 @@ public class AdminService {
 
     @Autowired
     UserRepository userRepo;
+
+
 
     public User getUser(long id) {
         return userRepo.getReferenceById(id);
@@ -80,35 +84,84 @@ public class AdminService {
         userRepo.deleteById(id);
     }
 
-    public void saveCommunityGuidelines(String guidelinesText) {
-        Admin admin = adminRepository.findById(1L).orElse(new Admin()); // Assuming there's only one admin
-        admin.setCommunityGuidelines(guidelinesText);
-        adminRepository.save(admin);
-    }
 
-    public String getCommunityGuidelines() {
-        return adminRepository.findById(1L)
-                .map(Admin::getCommunityGuidelines)
-                .orElse("");
-    }
+public String getCommunityGuidelines(Principal principal) {
+    String role = getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        Optional<User> adminUserOptional = userRepo.findByUserName(principal.getName());
+        return adminUserOptional.flatMap(adminUser ->
+                adminRepository.findByUser(adminUser).map(Admin::getCommunityGuidelines)
+        ).orElse("");
+    } else {
+        // For non-admin users, simply return the copyright text without checking for authorization
+        Optional
+<String> guidelinesOptional = adminRepository.findById(1L).map(Admin::getCommunityGuidelines);
+return guidelinesOptional.orElse("");
+}
+}
 
-    public void saveCopyRight(String copyrightText) {
-        Admin admin = adminRepository.findById(1L).orElse(new Admin()); // Assuming there's only one admin
-        admin.setCopyright(copyrightText);
-        adminRepository.save(admin);
+public void saveCommunityGuidelines(String guidelinesText, Principal principal) {
+    String role = getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        Optional<User> adminUserOptional = userRepo.findByUserName(principal.getName());
+        adminUserOptional.ifPresent(adminUser -> {
+            Admin admin = adminRepository.findByUser(adminUser).orElse(new Admin());
+            admin.setUser(adminUser);
+            admin.setCommunityGuidelines(guidelinesText);
+            adminRepository.save(admin);
+        });
+    } else {
+        // Handle unauthorized access
     }
+}
 
-    public String getCopyRight() {
-        return adminRepository.findById(1L)
-                .map(Admin::getCopyright)
-                .orElse("");
-    }
+public String getTermsOfService(Principal principal) {
+    String role = getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        Optional<User> adminUserOptional = userRepo.findByUserName(principal.getName());
+        return adminUserOptional.flatMap(adminUser ->
+                adminRepository.findByUser(adminUser).map(Admin::getTermsOfService)
+        ).orElse("");
+    } else {
+        // For non-admin users, simply return the copyright text without checking for authorization
+        Optional
+<String> termsOptional = adminRepository.findById(1L).map(Admin::getTermsOfService);
+return termsOptional.orElse("");
+}
+}
 
-    public long getTotalUsers() {
-        return userRepo.count(); // Count all users in the repository
+public void saveTermsOfService(String termsText, Principal principal) {
+    String role = getUserRole(principal.getName());
+    if (role != null && role.equals("Admin")) {
+        Optional<User> adminUserOptional = userRepo.findByUserName(principal.getName());
+        adminUserOptional.ifPresent(adminUser -> {
+            Admin admin = adminRepository.findByUser(adminUser).orElse(new Admin());
+            admin.setUser(adminUser);
+            admin.setTermsOfService(termsText);
+            adminRepository.save(admin);
+        });
+    } else {
+        // Handle unauthorized access
     }
+}
+
+// Utility method to fetch user role
+public String getUserRole(String username) {
+    Optional<User> userOptional = userRepo.findByUserName(username);
+    return userOptional.map(User::getRole).orElse(null);
+}
+
+
+
+public long getTotalUsers() {
+    return userRepo.countByRoleNotAdmin();
+}
+
 
     public List<Mod> getAllRequests() {
         return repo.findAll();
     }
+    
+   
+
 }

@@ -56,11 +56,11 @@
         <div class="col-md-6">
             <div class="card" style="margin-top:15px">
                 <div class="card-body">
-                    <h3 class="card-title text-center mb-4">Edit Community Guidelines</h3>
+                    <h3 class="card-title text-center mb-4">Edit Terms of Service</h3>
                    
-                    <form id="termsForm" th:action="@{/admin/save-community-guidelines}" method="post">
+                    <form id="termsForm" th:action="@{/admin/save-terms-service}" method="post">
                         <div class="form-group">
-                            <textarea name="guidelines" id="guidelines" rows="10" class="form-control" readonly th:text="${guidelines}" oninput="updatePreview()"></textarea>
+                            <textarea name="termsService" id="termsService" rows="10" class="form-control" readonly th:text="${termsService}" oninput="updatePreview()"></textarea>
                         </div>
           
                         <div class="text-center mb-3">
@@ -92,7 +92,7 @@
 
 <script>
     document.getElementById('editButton').addEventListener('click', function() {
-        var textarea = document.getElementById('guidelines');
+        var textarea = document.getElementById('termsService');
         textarea.removeAttribute('readonly');
         document.getElementById('editButton').style.display = 'none';
         document.getElementById('saveButton').style.display = 'block';

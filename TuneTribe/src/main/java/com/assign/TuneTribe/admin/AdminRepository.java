@@ -4,8 +4,12 @@
  */
 package com.assign.TuneTribe.admin;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.assign.TuneTribe.user.User;
 
 /**
  *
@@ -13,5 +17,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Long> {
-    
+    Optional<Admin> findByUser(User adminUser);
 }
+
