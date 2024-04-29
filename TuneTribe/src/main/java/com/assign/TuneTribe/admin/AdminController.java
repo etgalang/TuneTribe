@@ -6,8 +6,15 @@ package com.assign.TuneTribe.admin;
 
 import com.assign.TuneTribe.mod.Mod;
 import com.assign.TuneTribe.mod.ModService;
+import com.assign.TuneTribe.user.User;
+import com.assign.TuneTribe.user.UserRepository;
 import com.assign.TuneTribe.user.UserService;
+
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
+
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author shauna
  */
 @Controller
-@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
@@ -34,116 +40,148 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @GetMapping("/user")
+
+    @Autowired
+    private UserRepository userRepo;
+
+ @GetMapping("/admin/user")
     public String getUsers(Model model, @RequestParam(name = "continue", required = false) String cont) {
         model.addAttribute("userList", adminService.getUsers());
         return "admin/list-users";
     }
 
-    @GetMapping("/artist")
+    @GetMapping("/admin/artist")
     public String getArtists(Model model, @RequestParam(name = "continue", required = false) String cont) {
         model.addAttribute("userList", adminService.getArtists());
         return "admin/list-artists";
     }
 
-    @GetMapping("/tunetribe")
-    public String login() {
-        return "admin/tunetribe";
+    @GetMapping("/user/user-home")
+    public String toTuneTribeHome() {
+        return "user/user-home";
     }
 
-    @GetMapping("/user/{userID}")
+    @GetMapping("/admin/user/{userID}")
     public String deleteUser(@PathVariable Long userID) {
         adminService.deleteUser(userID);
         return "redirect:/admin/user";
     }
 
-    @PostMapping("/user/{userId}/toggle-ban")
+    @PostMapping("/admin/user/{userId}/toggle-ban")
     public String toggleUserBan(@PathVariable Long userId) {
         adminService.toggleUserBan(userId);
         return "redirect:/admin/user"; // Redirect back to the user list page
     }
 
-    @GetMapping("/artist/{userID}")
+    @GetMapping("/admin/artist/{userID}")
     public String deleteArtist(@PathVariable Long userID) {
         adminService.deleteUser(userID);
         return "redirect:/admin/artist";
     }
 
-    @PostMapping("/artist/{userId}/toggle-ban")
+    @PostMapping("/admin/artist/{userId}/toggle-ban")
     public String toggleArtistBan(@PathVariable Long userId) {
         adminService.toggleUserBan(userId);
         return "redirect:/admin/artist"; // Redirect back to the user list page
     }
 
-    @GetMapping("/moderator")
+    @GetMapping("/admin/moderator")
     public String getMods(Model model, @RequestParam(name = "continue", required = false) String cont) {
         model.addAttribute("userList", adminService.getMods());
         return "admin/list-mod";
     }
 
-    @GetMapping("/moderator/{modId}")
-    public String deleteMod(@PathVariable Long modId) {
-        modService.deleteMod(modId);
+    @GetMapping("/admin/moderator/{userID}")
+    public String deleteMod(@PathVariable Long userID) {
+        adminService.deleteUser(userID);
         return "redirect:/admin/moderator";
     }
 
-    @GetMapping("/modRequests")
+   
+
+    @GetMapping("/admin/modRequests")
     public String viewRequests(Model model) {
-        List<Mod> modRequests = adminService.getAllRequests(); // Assuming you have a service for managing mod requests
-    model.addAttribute("modRequests", modRequests);
+        List<Mod> modRequest = adminService.getAllRequests(); // Assuming you have a service for managing mod requests
+    model.addAttribute("modRequest", modRequest);
    
         return "admin/modRequests";
-    }
 
-    @GetMapping("/updates")
+    
+ }
+
+    @GetMapping("/admin/updates")
     public String getUpdatesForm(Model model) {
         return "admin/updates";
     }
+ 
 
-    @GetMapping("/community-guidelines")
-    public String getCommunityGuidelinesForm(Model model) {
-        String guidelines = adminService.getCommunityGuidelines();
-        model.addAttribute("guidelines", guidelines);
-        return "admin/community-guidelines-form";
+
+@GetMapping("/admin/community-guidelines")
+public String getCommunityGuidelinesForm(Model model, Principal principal) {
+    String guidelines = adminService.getCommunityGuidelines(principal);
+    model.addAttribute("guidelines", guidelines);
+    return "admin/community-guidelines-form";
+}
+
+@PostMapping("/admin/save-community-guidelines")
+public String saveCommunityGuidelines(@RequestParam("guidelines") String guidelinesText, Principal principal) {
+    adminService.saveCommunityGuidelines(guidelinesText, principal);
+    return "redirect:/admin/community-guidelines";
+}
+
+
+@GetMapping("/tunetribe-guidelines")
+public String getTuneTribeGuidelines(Model model, Principal principal) {
+    String role = adminService.getUserRole(principal.getName());
+    String guidelines;
+    if (role != null) {
+        // Assuming adminService.getCopyRight(principal) returns the copyright text
+        guidelines = adminService.getCommunityGuidelines(principal);
+    } else {
+        // Handle unauthorized access
+        return "redirect:/error";
     }
+    // Print the copyright value for debugging
+    System.out.println("Guideline text: " + guidelines);
+    model.addAttribute("guidelines", guidelines);
+    return "tunetribe-guidelines";
+}
 
-    @PostMapping("/save-community-guidelines")
-    public String saveCommunityGuidelines(@RequestParam("guidelines") String guidelinesText) {
-        adminService.saveCommunityGuidelines(guidelinesText);
-        return "redirect:/admin/community-guidelines";
+
+
+@GetMapping("/admin/terms-service")
+public String getTermsOfServiceForm(Model model, Principal principal) {
+    String termsService = adminService.getTermsOfService(principal);
+    model.addAttribute("termsService", termsService);
+    return "admin/terms-serviceform"; // Issue: returning the wrong view
+}
+
+@PostMapping("/admin/save-terms-service")
+public String saveTermsOfService(@RequestParam("termsService") String termsText, Principal principal) {
+    adminService.saveTermsOfService(termsText, principal);
+    return "redirect:/admin/terms-service";
+}
+
+
+@GetMapping("/tunetribe-service")
+public String getTuneTribeService(Model model, Principal principal) {
+    String role = adminService.getUserRole(principal.getName());
+    String termsService;
+    if (role != null) {
+        termsService = adminService.getTermsOfService(principal);
+    } else {
+        return "redirect:/error";
     }
+    model.addAttribute("termsService", termsService);
+    return "tunetribe-service"; // Issue: returning the wrong view
+}
 
-    @GetMapping("/tunetribe-guidelines")
-    public String getTuneTribeGuidelines(Model model) {
-        String guidelines = adminService.getCommunityGuidelines();
-        model.addAttribute("guidelines", guidelines);
-        return "admin/tunetribe-guidelines";
-    }
 
-    @GetMapping("/copyright-rules")
-    public String getCopyRightForm(Model model) {
-        String copyright = adminService.getCopyRight();
-        model.addAttribute("copyright", copyright);
-        return "admin/copyright-form";
-    }
-
-    @PostMapping("/save-copyright-rules")
-    public String saveCopyRight(@RequestParam("copyright") String copyrightText) {
-        adminService.saveCopyRight(copyrightText);
-        return "redirect:/admin/copyright-rules";
-    }
-
-    @GetMapping("/tunetribe-copyright")
-    public String getTuneTribeCopyright(Model model) {
-        String copyright = adminService.getCopyRight();
-        model.addAttribute("copyright", copyright);
-        return "admin/tunetribe-copyright";
-    }
-
-    @GetMapping("/user/id={id}")
+    @GetMapping("/user/user-myprofile/id={id}")
     public String getUserProfile(@PathVariable long id, Model model) {
         model.addAttribute("user", adminService.getUser(id));
-        return "admin/user-profile";
+        return "user/user-myprofile";
     }
 
 }
+

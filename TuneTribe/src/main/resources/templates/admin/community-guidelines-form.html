@@ -6,97 +6,152 @@
     <title>Community Guidelines</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-    <script src="../datatable.js"></script>
- <style>
-        body {
-            background-color: #F8F2DC;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-           
-            background-color: #DEA47E;
-            padding-top: 20px;
-        }
-
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 18px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidenav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .active {
-            background-color: #2196F3;
-            color: white;
-        }
-
-        .container {
-            margin-left: 200px; /* Same as the width of the sidenav */
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-
-            .sidenav a {
-                font-size: 18px;
-            }
-        }
-    </style>
+    <!-- Ensure that Bootstrap JavaScript is included -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/7M2+E1mBE4y5gRV5vNcF+2Y0Z4p+pqz3V9vZI6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
+<style>
+    body {
+        background-color: #F8F2DC;
+    }
+
+</style>
 <body>
-<!-- Side Navbar -->
-<div class="sidenav">
-    <a th:href="@{/admin/home}">Admin</a>
+ <!-- Navbar START -->
+ <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #DEA47E;">
+    <a style="color:black; font-weight: bold; font-size: 20px;" th:href="@{/admin/home}">Admin</a>
     
-        <i class="fa fa-caret-down"></i>
+    <!-- Adjusted data-target to target the id of the navbar collapse div -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="dropdown-container">
-        <a href="/admin/tunetribe">TuneTribe</a>
-        <a href="/admin/tunetribe-guidelines">Guidelines</a>
-        <a href="/admin/tunetribe-copyright">Copyright Rules</a>
-    </div>
-    <form th:action="@{/logout}" method="post">
-    <button class="btn mt-3" type="submit" style="background-color: lightblue; border: none; outline: none; margin-left: 25px; color: white; position: absolute; bottom: 20px;">
-        <span style="font-size: 16px;">Log Out</span>
-    </button>
-</form>
-</div>
-<div class="container d-flex justify-content-center align-items-center" style="height: 70vh;">
-    <div>
-        <h3 class="text-center">Edit Community Guidelines</h3>
-        <form th:action="@{/admin/save-community-guidelines}" method="post">
-            <textarea name="guidelines" rows="10" cols="50" th:text="${guidelines}" readonly></textarea>
-            <br/>
-            <button type="button" id="editButton" class="btn btn-primary">Edit</button>
-            <button type="submit" id="saveButton" class="btn btn-success" style="display: none;">Save</button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/user/user-home" style="color: black;">Tune Tribe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tunetribe-guidelines" style="color: black;">Community Guidelines</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tunetribe-service" style="color: black;">Terms Of Service</a>
+            </li>
+        </ul>
+        <!-- Logout Button -->
+        <form class="form-inline" th:action="@{/logout}" method="post">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit"  style="background-color: #F8F2DC; border: none; outline: none; color: black;">Log Out</button>
         </form>
     </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/7M2+E1mBE4y5gRV5vNcF+2Y0Z4p+pqz3V9vZI6" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- Navbar END -->
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
+        <div class="col-md-6">
+            <div class="card" style="margin-top:15px">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Edit Community Guidelines</h3>
+                   
+                    <form id="termsForm" th:action="@{/admin/save-community-guidelines}" method="post">
+                        <div class="form-group">
+                            <textarea name="guidelines" id="guidelines" rows="10" class="form-control" readonly th:text="${guidelines}" oninput="updatePreview()"></textarea>
+                        </div>
+          
+                        <div class="text-center mb-3">
+                            <button type="button" class="btn btn-secondary" onclick="wrapText('bold')" id="boldButton" disabled>Bold</button>
+                            <button type="button" class="btn btn-secondary" onclick="wrapText('italic')" id="italicButton" disabled>Italic</button>
+                            <button type="button" class="btn btn-secondary" onclick="wrapText('underline')" id="underlineButton" disabled>Underline</button>
+                            <button type="button" class="btn btn-secondary" onclick="wrapText('paragraph')" id="paragraphButton" disabled>Paragraph</button>
+                            <button type="button" class="btn btn-secondary" onclick="wrapText('h1')" id="h1Button" disabled>Large</button>
+                            <button type="button" class="btn btn-secondary"  onclick="wrapText('h2')" id="h2Button" disabled>Medium</button>
+             
+                            <button type="button" class="btn btn-secondary" onclick="wrapText('h3')" id="h3Button" disabled>Small</button>
+             
+                        </div>
+            
+                        <div class="text-center">
+                            <button type="button" id="editButton" class="btn btn-primary">Edit</button>
+                            <button type="submit" id="saveButton" class="btn btn-success" style="display: none;">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="width: 50%; margin: 20px auto;">
+    <div id="preview" style="border: 1px solid #ccc; padding: 10px;"></div>
 </div>
 
 <script>
-    // JavaScript to toggle between edit and save buttons
     document.getElementById('editButton').addEventListener('click', function() {
-        document.querySelector('textarea').removeAttribute('readonly');
+        var textarea = document.getElementById('guidelines');
+        textarea.removeAttribute('readonly');
         document.getElementById('editButton').style.display = 'none';
         document.getElementById('saveButton').style.display = 'block';
+        document.getElementById('boldButton').disabled = false;
+        document.getElementById('italicButton').disabled = false;
+        document.getElementById('underlineButton').disabled = false;
+        document.getElementById('paragraphButton').disabled = false;
+        document.getElementById('h1Button').disabled = false;
+        document.getElementById('h2Button').disabled = false;
+        document.getElementById('h3Button').disabled = false;
+   
     });
-</script>
-    
-       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+    function wrapText(style) {
+        var textarea = document.getElementById('guidelines');
+        var selectionStart = textarea.selectionStart;
+        var selectionEnd = textarea.selectionEnd;
+        var selectedText = textarea.value.substring(selectionStart, selectionEnd);
+        var newText = '';
+
+        switch (style) {
+            case 'bold':
+                newText = "<b>" + selectedText + "</b>";
+                break;
+            case 'italic':
+                newText = "<i>" + selectedText + "</i>";
+                break;
+            case 'underline':
+                newText = "<u>" + selectedText + "</u>";
+                break;
+            case 'paragraph':
+                newText = "<p>" + selectedText + "</p>";
+                break;  
+                case 'h1':
+                newText = "<h1>" + selectedText + "</h1>";
+                break;   
+                case 'h2':
+                newText = "<h2>" + selectedText + "</h2>";
+                break; 
+                case 'h3':
+                newText = "<h3>" + selectedText + "</h3>";
+                break;   
+            default:
+                newText = selectedText;
+        }
+
+        // Replace only the selected text with the formatted version
+        var updatedText = textarea.value.substring(0, selectionStart) + newText + textarea.value.substring(selectionEnd);
+        textarea.value = updatedText;
+        updatePreview(); // Update preview after formatting
+    }
+
+    function updatePreview() {
+        var previewDiv = document.getElementById('preview');
+        var textarea = document.getElementById('guidelines');
+        previewDiv.innerHTML = textarea.value;
+    }
+</script>
+
+      
 </body>
 </html>
