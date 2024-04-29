@@ -1,6 +1,7 @@
 
 package com.assign.TuneTribe.user;
 
+import com.assign.TuneTribe.TopSongs.TopSongsService;
 import com.assign.TuneTribe.post.Post;
 import com.assign.TuneTribe.post.PostService;
 import com.assign.TuneTribe.song.Song;
@@ -36,6 +37,9 @@ public class UserController {
     @Autowired
     private SongService sService;
     
+    @Autowired
+    private TopSongsService tpService;
+    
     @GetMapping({"/", "","/home"}) //we need user info and post info here
     public String homePage (Model model) {
         
@@ -68,7 +72,12 @@ public class UserController {
     
     @GetMapping ("/myProfile")
     public String myProfile (Model model){
+        List<Song> songs = sService.getAllSongs();
         model.addAttribute("user", service.getUser(currUser));
+        model.addAttribute("songs", songs);
+        model.addAttribute("topSongs", tpService.findByTopSongsById
+        (service.getUser(currUser).getId()));
+        
         return "user/user-myprofile";
     }
     
@@ -85,7 +94,20 @@ public class UserController {
        // model.addAttribute("user", service.getUser(username));
        //return "user/user-myprofile";
     //}
+    
+    @GetMapping("/updateTopSong={songnum}")
+    public String myProfile(@PathVariable int songnum, Model model){
+        
+        List<Song> songs = sService.getAllSongs();
 
+        model.addAttribute("user", currUser);
+        model.addAttribute("songs", songs);
+        model.addAttribute("topSong", tpService.findByTopSongsById
+        (service.getUser(currUser).getId()) );
+        return"redirect:/user/myProfile";
+    }
+    
+    
     
     //this is for friends, not working yet   
     @GetMapping("/username={username}")

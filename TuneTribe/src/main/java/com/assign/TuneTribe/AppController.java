@@ -1,5 +1,7 @@
 package com.assign.TuneTribe;
 
+import com.assign.TuneTribe.TopSongs.TopSongs;
+import com.assign.TuneTribe.TopSongs.TopSongsService;
 import com.assign.TuneTribe.admin.AdminService;
 import com.assign.TuneTribe.user.User;
 import com.assign.TuneTribe.user.UserRepository;
@@ -30,6 +32,8 @@ public class AppController {
     @Autowired
     UserService service;
     
+    @Autowired
+    TopSongsService tpService;
     
     @Autowired
     private AdminService adminService;
@@ -50,7 +54,7 @@ public class AppController {
                 String name = auth.getName();
                 model.addAttribute("currentUser", name); //returns username
                 System.out.println(auth.getDetails());//
-                return "user/user-home";
+                return "redirect:/user/home";
             }
         }
         return "redirect:/login"; // Redirect unauthenticated users to login page
@@ -77,6 +81,7 @@ public class AppController {
     @PostMapping("/register")
     public String registerUser(User user) {
         service.saveUser(user);
+        tpService.saveTopSongs(new TopSongs(user.getId()));
         return "redirect:/login";
     }
 

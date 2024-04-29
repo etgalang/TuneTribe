@@ -31,7 +31,11 @@ public class User {
     private boolean banned = false;
     private String userPassword;
     private String role;
-    private int topSong;
+    private int topSong = (int)id;
+    private int following = 0;
+    private int followers = 0;
+    
+    
 
 
     public User(String username, String userEmail, boolean banned, String userPassword, String userFName, String userLName, String role) {
@@ -131,6 +135,22 @@ public class User {
     
     public void getTopSong (){ //return table
         
+    }
+
+    public int getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(int following) {
+        this.following = following;
+    }
+
+    public int getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(int followers) {
+        this.followers = followers;
     }
 
     
