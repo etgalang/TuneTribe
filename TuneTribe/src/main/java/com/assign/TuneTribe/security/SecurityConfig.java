@@ -48,7 +48,8 @@ public class SecurityConfig {
                 .formLogin((form) -> form
                 .loginPage("/login")
                 .permitAll()
-                )
+                 .successHandler(successHandler()))
+                
                 .logout((logout) -> logout.permitAll())
                 .requestCache((cache) -> cache
                 .requestCache(requestCache)

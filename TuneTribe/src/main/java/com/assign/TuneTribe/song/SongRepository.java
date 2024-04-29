@@ -37,7 +37,7 @@ public class SongRepository {
     NamedParameterJdbcTemplate template;
     
     //spotify api start
-    private static final String accessToken = "BQDi9IUw3PKnfvs6tG8uFdx4epeM5R0PeKlQ3Do2krXrqFIltXwp7AhG4F33n1sp6VB-8lPq5nYksoOxu_FcRe_JXI8e3oCG8ONgFOve1CSkC6KoHOw";
+    private static final String accessToken = "BQCMTydv4ilMSeyHt7H99xhJVZH7LHT09GY2ns3sVAtD1AIus6IqOPLpBGlxvN3Op8MX0n7FpLhbjvrkov5XBXTX9334_2idX32SuSRuXwHIyreYjUg";
 
     
     List<Song> findAll() {

@@ -53,7 +53,9 @@ public class AppController {
                 // Regular users go to root page
                 String name = auth.getName();
                 model.addAttribute("currentUser", name); //returns username
-                System.out.println(auth.getDetails());//
+                System.out.println("Details " + auth.getDetails());//
+                System.out.println("Authorities /'" + auth.getAuthorities().toString()+"/'");//
+                System.out.println("Authorities /'" + auth.getAuthorities()+"/'");//
                 return "redirect:/user/home";
             }
         }

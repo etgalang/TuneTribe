@@ -188,7 +188,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div class="username" th:text=" ${post.username}"></div>
                 <div class="post-date" th:text=" ${post.PostDate}"></div>
             </div>
-            <div class="post-options">...</div>
+            <!--<a th:href="@{/post/report}"><div class="post-options">...</div></a>-->
+            <a href="/post/report"><div class="post-options">...</div></a>
 
         </div>
         <div class="post-caption" th:text=" ${post.caption}"></div>
