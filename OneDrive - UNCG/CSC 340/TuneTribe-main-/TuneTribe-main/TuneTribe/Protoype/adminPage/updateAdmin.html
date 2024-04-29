@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuneTribe</title>
+    <link rel="stylesheet" href="../styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
+        integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <nav class="navbar columns is-fixed-top" role="navigation" aria-label="main navigation" id="app-header">
+        <div class="navbar-brand column is-2 is-paddingless">
+            <a class="navbar-item" href="myAdmin.html">
+                TuneTribe Admin
+            </a>
+            
+        </div>
+
+        <div class="navbar-menu column is-hidden-touch">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                      
+                            <img class="is-rounded" src="../images/avatar-15.png">
+                     
+                        &nbsp; Admin
+                    </a>
+                    <div class="navbar-dropdown">
+
+                        <hr class="navbar-divider">
+                        <a class="navbar-item logout">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="columns" id="adminInfo">
+        <div class="column is-2 is-fullheight is-hidden-touch" id="sidebar">
+            <aside class="menu">
+
+                <ul class="menu-list">
+                    <li>
+                        <a class="is-active" href="myAdmin.html">
+                            Admin Page
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="" href="userAdmin.html">
+                            User
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="artistAdmin.html">
+                            Artist
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="artPermAdmin.html">
+                            Artist Permissions
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="modAdmin.html">
+                            Moderator Permissions
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="modRequest.html">
+                            Request
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="updateAdmin.html">
+                            Update 
+                        </a>
+                    </li>
+                </ul>
+
+
+            </aside>
+        </div>
+
+        <div class="column is-10" id="page-content">
+            <div class="content-header">
+                <h4 class="title is-4">Updates</h4>
+                <span class="separator"></span>
+
+            </div>
+
+
+            <div class="listAdmin">
+               
+                  
+                        
+                  
+                    <div class="card-content">
+                        <table class="table is-hoverable is-bordered is-fullwidth" id="datatable">
+
+                        </table>
+                    </div>
+               
+            </div>
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
+            integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+     
+</body>
+
+</html>

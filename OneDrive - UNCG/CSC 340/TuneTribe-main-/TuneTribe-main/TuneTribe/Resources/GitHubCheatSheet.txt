@@ -1,0 +1,52 @@
+FOR NEW PROJECTS:
+
+1.Create a new Repo in Github
+
+2.Copy the URL
+	a. Go to project Repo
+	b. Click on Green Button "<> Code"
+	c. Local Tab -> HTTPS Tab
+	d. copy URL (https://.../repoName)
+
+3. Go to workspace where you want the repo (folder) to be copied to
+	faq: When you create a repo in Github you are essentially creating a
+	new folder. Because of this when you clone the repo to your
+	selected workspace (ex. downloads folder) it will create a new
+	folder (Whatever you named your repo) in your downloads folder
+
+4. Use the following command to clone repo to workspace
+	git clone REPLACE THIS WITH THE URL
+
+5. In the Command prompt use the follwing commands
+	ls
+		this will list all items in current directory, you should see
+		the directory that was just copied from github
+	cd DIRECTORYNAME
+		This will move you inside the directory
+
+FOR EXISTING PROJECTS:
+6. Do work, changes, whatever to directory
+	Next couple steps will be to update the Github repo with any changes you
+	have done.
+
+7. Creating a new Branch (Not required but recommended)
+	faq: Do you feel like the changes you made might break everything but
+		you still want others to see or just want to save you work?
+		Create a new Branch!
+	a. use the command -> git checkout -b [Branch name]
+		give branch name example [first inital + lastname] -> mgarciapaez
+
+8. Add edited file/files to staging area
+	a. use command -> git add FILENAME.EXT
+	b. replacing FILENAME.EXT with a period '.' adds everything in current 
+		directory to staging area (dangerous if not in correct directory)
+
+9. Commit changes to repo
+	a. use command -> git commit -m "Give a small description of your changes"
+	
+10. Push your work to github
+	a. Use command -> git push
+		if on seperate branch, you will push your branch to github and
+		it will be under a different tab than the main(origin) branch
+	b. use command -> git push origin [BRANCH NAME]
+		This will merge your branch with the main branch
