@@ -164,10 +164,6 @@ public long getTotalUsers() {
     return userRepo.countByRoleNotAdmin();
 }
 
-
-    public List<Mod> getAllRequests() {
-        return repo.findAll();
-    }
     
     public User getByUsername(String username) {
         Optional<User> userOptional = userRepo.findByUserName(username);

@@ -6,6 +6,7 @@ package com.assign.TuneTribe.admin;
 
 import com.assign.TuneTribe.mod.Mod;
 import com.assign.TuneTribe.mod.ModService;
+import com.assign.TuneTribe.modreport.ModReportService;
 import com.assign.TuneTribe.user.User;
 import com.assign.TuneTribe.user.UserRepository;
 import com.assign.TuneTribe.user.UserService;
@@ -44,6 +45,9 @@ public class AdminController {
     @Autowired
     private UserRepository userRepo;
 
+    @Autowired
+    private ModReportService modReportRepo;
+
  @GetMapping("/admin/user")
     public String getUsers(Model model, @RequestParam(name = "continue", required = false) String cont) {
         model.addAttribute("userList", adminService.getUsers());
@@ -73,18 +77,18 @@ public class AdminController {
         return "redirect:/admin/user"; // Redirect back to the user list page
     }
 
-    @GetMapping("/admin/modRequests")
-    public String getModRequests(Model model, @RequestParam(name = "continue", required = false) String cont) {
-        List<Mod> modRequests = adminService.getAllRequests();
-        model.addAttribute("modRequests", modRequests);
-        return "admin/modRequests"; // Assuming this is the view to display moderator reports
-    }
+    //@GetMapping("/admin/modRequests")
+    //public String getModRequests(Model model, @RequestParam(name = "continue", required = false) String cont) {
+      //  List<Mod> modRequests = adminService.getAllRequests();
+      //  model.addAttribute("modRequests", modRequests);
+      //  return "admin/modRequests"; // Assuming this is the view to display moderator reports
+    //}
    
-   // @GetMapping("/admin/artist")
-    //public String getReports(Model model, @RequestParam(name = "continue", required = false) String cont) {
-     //   model.addAttribute("userList", adminService.getReports());
-     //   return "admin/modRequests";
-   // }
+   @GetMapping("/admin/modRequests")
+    public String getReports(Model model, @RequestParam(name = "continue", required = false) String cont) {
+       model.addAttribute("modReportList", modReportRepo.getAllReports());
+    return "admin/modRequests";
+   }
 
    // @PostMapping("/admin/modRequest/{reportId}/toggle-ban")
    // public String toggleReportBan(@PathVariable Long reportId) {

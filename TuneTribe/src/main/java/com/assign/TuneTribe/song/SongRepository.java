@@ -37,7 +37,7 @@ public class SongRepository {
     NamedParameterJdbcTemplate template;
     
     //spotify api start
-    private static final String accessToken = "BQCMTydv4ilMSeyHt7H99xhJVZH7LHT09GY2ns3sVAtD1AIus6IqOPLpBGlxvN3Op8MX0n7FpLhbjvrkov5XBXTX9334_2idX32SuSRuXwHIyreYjUg";
+    private static final String accessToken = "BQDbmzjrg_FXeLyvzT3MMlpVaGf-H2GOWt2edRk3GKqcUx8XfMehVaSaZ56TJLxbEI6r7mkvAdymTFKd2UplrCb4ixYPBpmbDA3CoC0yRc2lA7bKZQc";
 
     
     List<Song> findAll() {
@@ -68,6 +68,9 @@ public class SongRepository {
     }
     
     public int saveSong(Song song) {
+        
+        //Check if song already exist
+        
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("artist", song.getArtist());
         paramMap.put("cover_url", song.getCoverUrl());

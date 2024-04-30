@@ -2,10 +2,14 @@
 package com.assign.TuneTribe.song;
 
 
+import com.assign.TuneTribe.TopSongs.TopSongsService;
+import static com.assign.TuneTribe.user.UserController.currUser;
 import com.assign.TuneTribe.user.UserServ;
 import jakarta.servlet.http.HttpServletRequest;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +28,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/song")
 public class SongController {
 
-    String currUser = "Mau._.Wee";
+    String currUser = "";
     int songNum;
 
+    @Autowired
+    private TopSongsService tpService;
     
     @Autowired
     private SongService service;
@@ -41,7 +47,9 @@ public class SongController {
     }
     
     @GetMapping("/newsong")
-    public String newSongForm(Model model) {
+    public String newSongForm(@CurrentSecurityContext(expression="authentication?.name")
+            String username, Model model) {
+        currUser = username;
         return "song/song-create";
     }
     
@@ -59,7 +67,9 @@ public class SongController {
     }
     
     @GetMapping("/recommend")
-    public String getRecommendation(Model model) {
+    public String getRecommendation(@CurrentSecurityContext(expression="authentication?.name")
+            String username, Model model) {
+        currUser = username;
         model.addAttribute("song", service.getRecommendation());
         return "song/song-recommend"; //need html
     }
@@ -71,18 +81,46 @@ public class SongController {
     }
     
     @GetMapping("/search")
-    public String searchSong(Model model) {
-        
+    public String searchSong(@CurrentSecurityContext(expression="authentication?.name") String username, Model model) {
+        currUser = username;
         model.addAttribute("user", uService.getUser(currUser));
         return "song/song-search-createpost"; //need html
     }
     
+    
     @GetMapping("/search={songnum}")
-    public String addSongSearch(@PathVariable int songnum, Model model) {
+    public String addSongSearch(@CurrentSecurityContext(expression="authentication?.name") String username, @PathVariable int songnum, Model model) {
+        List<Song> songs = service.getAllSongs();
         songNum = songnum;
+        currUser = username;
+        model.addAttribute("songs", songs);
         model.addAttribute("user", uService.getUser(currUser));
+        model.addAttribute("replace", songNum);
+        
         return "song/song-search-addsong"; //need html
     }
+    
+    @GetMapping("/submitaddsong")
+    public String addSongSearchSong(@RequestParam("song-name") String name,
+            @RequestParam("song-artist")String artist, @RequestParam("replacing-name")String oldName,
+            @RequestParam("replacing-artist")String oldArtist,@RequestParam("songNum")int songNum, Model model ) {
+        
+        
+        Song song = service.searchSong(name + " " + artist);
+
+        service.saveSong(song);
+        song = service.getSongByName(song.getName());
+        System.out.println(song.getId());
+        System.out.println(song.getName());
+        //long id, int selection, long songId
+        tpService.updateTopSong(uService.getUser(currUser).getId(), songNum,
+                song.getId());
+        
+        
+       //model.addAttribute("song", service.searchSong(name + " " + artist));
+       //model.addAttribute("user", uService.getUser(currUser));
+        return "redirect:/user/myProfile"; //need html
+    }    
     
     @GetMapping("/submitsong")
     public String searchSong(@RequestParam("song-name") String name,
