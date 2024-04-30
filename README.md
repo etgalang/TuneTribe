@@ -15,5 +15,7 @@ platform fosters community interaction while providing exposure for emerging art
 a positive user experience by managing comments and addressing any issues. Admins oversee the
 platform's operations and have the authority to ban users or artists if necessary.
 
-![UML Case diagram)](https://github.com/etgalang/TuneTribe/assets/156261506/a5ba1357-02be-4d18-bdae-ab14f6fc11b6)
+![UML case diagram (6)](https://github.com/etgalang/TuneTribe/assets/156261506/dfbbc492-1dfb-4530-8ff5-4796e7161808)
+
+
 
