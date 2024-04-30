@@ -6,7 +6,6 @@ package com.assign.TuneTribe.admin;
 
 import com.assign.TuneTribe.mod.Mod;
 import com.assign.TuneTribe.mod.ModService;
-import com.assign.TuneTribe.modreport.ModReport;
 import com.assign.TuneTribe.modreport.ModReportService;
 import com.assign.TuneTribe.user.User;
 import com.assign.TuneTribe.user.UserRepository;
@@ -47,7 +46,7 @@ public class AdminController {
     private UserRepository userRepo;
 
     @Autowired
-    private ModReportService modReportService;
+    private ModReportService modReportRepo;
 
  @GetMapping("/admin/user")
     public String getUsers(Model model, @RequestParam(name = "continue", required = false) String cont) {
@@ -78,30 +77,24 @@ public class AdminController {
         return "redirect:/admin/user"; // Redirect back to the user list page
     }
 
-
+    //@GetMapping("/admin/modRequests")
+    //public String getModRequests(Model model, @RequestParam(name = "continue", required = false) String cont) {
+      //  List<Mod> modRequests = adminService.getAllRequests();
+      //  model.addAttribute("modRequests", modRequests);
+      //  return "admin/modRequests"; // Assuming this is the view to display moderator reports
+    //}
+   
    @GetMapping("/admin/modRequests")
     public String getReports(Model model, @RequestParam(name = "continue", required = false) String cont) {
-       model.addAttribute("modReportList", modReportService.getAllReports());
+       model.addAttribute("modReportList", modReportRepo.getAllReports());
     return "admin/modRequests";
    }
 
-   @PostMapping("/admin/modRequest/{id}/toggle-ban")
-   public String toggleReportBan(@PathVariable Long id) {
-       ModReport report = modReportService.getReport(id);
-       if (report != null) {
-           // Toggle the banned status of the reported user
-           if (report.isBanned()) {
-               // If the user is currently banned, unban them
-               adminService.unbanReportedUser(report.getPostId());
-               modReportService.updateBannedStatus(id, false);
-           } else {
-               // If the user is not banned, ban them
-               adminService.banReportedUser(report.getPostId());
-               modReportService.updateBannedStatus(id, true);
-           }
-       }
-       return "redirect:/admin/modRequests";
-   }
+   // @PostMapping("/admin/modRequest/{reportId}/toggle-ban")
+   // public String toggleReportBan(@PathVariable Long reportId) {
+   //     adminService.toggleReportBan(reportId);
+   //     return "redirect:/admin/modRequests"; // Redirect back to the moderator reports page
+   // }
 
     @GetMapping("/admin/artist/{userID}")
     public String deleteArtist(@PathVariable Long userID) {

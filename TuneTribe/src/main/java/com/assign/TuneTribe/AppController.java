@@ -82,7 +82,7 @@ public class AppController {
 
     @GetMapping("/mod/mod")
     public String mod(Model model) {
-        return "redirect:/mod/home";
+        return "mod/mod";
     } 
 
     @GetMapping("/artist/home")

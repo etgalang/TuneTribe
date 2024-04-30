@@ -40,8 +40,4 @@ public class ModReportService {
     public void saveReport(ModReport report) {
         repo.saveReport(report);
     }
-
-    public void updateBannedStatus(long id, boolean banned) {
-        repo.updateBannedStatus(id, banned);
-    }
 }
