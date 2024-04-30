@@ -62,7 +62,7 @@ button:hover {
     <body>
         <div class="container">
             <h1 Style="text-align: center; margin-top: 5px; margin-bottom: 50px; font-family: cursive;" >Song Search</h1>
-            <form id="song-search-form-add-song" action="/song/submitsong">
+            <form id="song-search-form-add-song" action="/song/submitaddsong">
                 <div class="input-group">
                     <label for="song-name">Song Name:</label>
                     <input type="text" id="song-name" name="song-name" required>
@@ -71,6 +71,24 @@ button:hover {
                     <label for="artist-name">Artist:</label>
                     <input type="text" id="song-artist" name="song-artist" required>
                 </div>
+                <div>
+                    <h4>
+                        Replacing:
+                    </h4>
+                </div>
+                <div class="input-group">
+                    <label for="song-to-replace" >Number: </label>
+                    <input readonly type="display" th:value="${replace}" id="songNum" name="songNum">
+                </div>
+                <div class="input-group">
+                    <label for="song-to-replace" >Song:</label>
+                    <input readonly type="display" th:value="${songs[replace].name}" id="replacing-name" name="replacing-name">
+                </div>
+                <div class="input-group">
+                    <label for="song-to-replace" >Artist: </label>                 
+                    <input readonly type="display" th:value="${songs[replace].artist}" id="replacing-artist" name="replacing-artist">
+                </div>
+                
                 
                 <button type="submit">Search</button>
             </form>

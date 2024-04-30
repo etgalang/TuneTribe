@@ -7,6 +7,7 @@ import com.assign.TuneTribe.song.Song;
 import com.assign.TuneTribe.song.SongService;
 import com.assign.TuneTribe.user.UserServ;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/post")
 public class PostController {
     
-    String currUser = "Mau._.Wee";
+    String currUser = " ";
     
     @Autowired
     private PostService service;
@@ -45,18 +46,21 @@ public class PostController {
     }
     
     @GetMapping("/newpost")
-    public String newPostForm(@RequestParam("song-name") String name,
+    public String newPostForm(@CurrentSecurityContext(expression="authentication?.name") String username, 
+            @RequestParam("song-name") String name,
             @RequestParam("song-artist")String artist, Model model) {
-        
+        currUser = username;
         model.addAttribute("song", sService.searchSong(name + " " + artist));
         
         return "post/post-create";
     }
     
     @GetMapping("/create") //new user form will take us here
-    public String createPost(@RequestParam("song-name") String name,
+    public String createPost(@CurrentSecurityContext(expression="authentication?.name") String username, 
+            @RequestParam("song-name") String name,
             @RequestParam("song-artist")String artist, 
             @RequestParam("post-caption")String caption) {
+        currUser = username;
         Song tempSong = new Song();
         tempSong = sService.searchSong(name + " " + artist);
         sService.saveSong(tempSong);
@@ -68,7 +72,9 @@ public class PostController {
     
     
     @GetMapping("/id={id}")
-    public String getPost(@PathVariable long id, Model model) {
+    public String getPost(@CurrentSecurityContext(expression="authentication?.name") String username, 
+            @PathVariable long id, Model model) {
+        currUser = username;
         model.addAttribute("post", service.getPost(id));
         
         return "post/post-viewPost";
@@ -80,7 +86,9 @@ public class PostController {
         return "mod/report";
     }*/
     @GetMapping("/report={postId}")
-    public String reportPost (@PathVariable long postId, Model model){
+    public String reportPost (@CurrentSecurityContext(expression="authentication?.name") String username,
+            @PathVariable long postId, Model model){
+        currUser = username;
         model.addAttribute("reporter", uService.getUser(currUser));
         model.addAttribute("reported", uService.getUser(service.getPost(postId).getUsername()));
         model.addAttribute("post", service.getPost(postId));
@@ -89,10 +97,12 @@ public class PostController {
     }
     
     @GetMapping("/createreport")
-    public String reportPost (@RequestParam("postId") long postId,@RequestParam("userName") String reporter,
+    public String reportPost (@CurrentSecurityContext(expression="authentication?.name") String username,
+            @RequestParam("postId") long postId,@RequestParam("userName") String reporter,
             @RequestParam("reportedUser")String reported, 
             @RequestParam("explanation")String explanation, Model model){
         
+        currUser = username;
         Report report = new Report();
         report.setPostId(postId);
         report.setReportedId(uService.getUser(reported).getId());

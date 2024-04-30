@@ -6,6 +6,7 @@ import com.assign.TuneTribe.post.Post;
 import com.assign.TuneTribe.post.PostService;
 import com.assign.TuneTribe.song.Song;
 import com.assign.TuneTribe.song.SongService;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +49,7 @@ public class UserController {
     public String homePage (@CurrentSecurityContext(expression="authentication?.name") String username, Model model) {
         currUser = username;
         List<Post> posts = pService.getAllPosts();
+        Collections.reverse(posts);
         List<Song> songs = sService.getAllSongs();
         
         //Next Create a map to associate a songId with a Song object
@@ -87,12 +89,17 @@ public class UserController {
     }
     
     
-    //@GetMapping("/myProfile={username}")
-    //public String myProfile(@PathVariable String username,Model model){
+    @GetMapping("/myProfile=")
+    public String myProfileTwo(@CurrentSecurityContext(expression="authentication?.name") String username,Model model){
+        currUser = username;
+     List<Song> songs = sService.getAllSongs();
+        model.addAttribute("user", service.getUser(currUser));
+        model.addAttribute("songs", songs);
+        model.addAttribute("topSongs", tpService.findByTopSongsById
+        (service.getUser(currUser).getId()));
         
-      // model.addAttribute("user", service.getUser(username));
-       //return "user/user-myprofile";
-    //}
+        return "user/user-myprofile";
+    }
     
     @GetMapping("/updateTopSong={songnum}")
     public String myProfile(@PathVariable int songnum, Model model){
