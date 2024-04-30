@@ -14,49 +14,69 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
 }
 
-h1 {
-    font-size: 24px;
-    color: #333;
-    text-align: center;
-    padding-bottom: 20px;
-}
+.home-button {
 
-label {
-    font-weight: bold;
-    margin: 10px 0 5px;
-}
-
-input[type="text"], textarea {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #5c67f2;
+    left: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-    text-transform: uppercase;
+}
+
+.home-button:hover {
+    background-color: #45a049;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reports-section, .feed-section {
+    flex: 1;
+    padding: 20px;
+    margin-right: 10px;
+    background-color: #ffffff; /* White background */
+    border: 1px solid #ccc; /* Gray border */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.reports-section {
+    margin-right: 20px;
+}
+
+.feed-section {
+    margin-left: 20px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.report, #currentPostFeed {
+    background: #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+button {
+    width: auto;
+    padding: 5px 10px;
+    margin-top: 5px;
 }
 
 button:hover {
@@ -65,8 +85,66 @@ button:hover {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .container {
-        width: 90%;
-        margin: 10px auto;
+    .dashboard {
+        flex-direction: column;
     }
+    .reports-section, .feed-section {
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+}
+
+.admin-section {
+    padding: 20px;
+    margin-top: 20px; /* Space from the main dashboard */
+    background-color: #f4f4f4; /* Slightly different background for visual separation */
+    border: 1px solid #ccc; /* Consistent with other sections */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.admin-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-section label {
+    margin-bottom: 5px;
+}
+
+.admin-section input[type="text"],
+.admin-section textarea {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%; /* Full width for input fields */
+}
+
+.admin-section button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green button for actions */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin-section button:hover {
+    background-color: #45a049;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 10px;
+    background-color: #f0f0f0; /* Light gray background */
+    color: #666; /* Darker gray text color */
+    border-top: 1px solid #ddd; /* A subtle border line at the top of the footer */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0; /* Removes default margin */
+    font-size: 14px;
 }
