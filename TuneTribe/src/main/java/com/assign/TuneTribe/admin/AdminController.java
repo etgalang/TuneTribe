@@ -80,6 +80,11 @@ public class AdminController {
         return "admin/modRequests"; // Assuming this is the view to display moderator reports
     }
    
+   // @GetMapping("/admin/artist")
+    //public String getReports(Model model, @RequestParam(name = "continue", required = false) String cont) {
+     //   model.addAttribute("userList", adminService.getReports());
+     //   return "admin/modRequests";
+   // }
 
    // @PostMapping("/admin/modRequest/{reportId}/toggle-ban")
    // public String toggleReportBan(@PathVariable Long reportId) {

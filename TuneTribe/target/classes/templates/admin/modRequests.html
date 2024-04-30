@@ -102,23 +102,22 @@
         <table class="table table-bordered" id="datatable">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Username</th>        
-                    <th>Reason</th>
+                    <th>ID</th>      
+                    <th>Explanation</th>
                     <th>Action</th>
                 </tr>
             </thead>
                 <tbody>
 
-                   <!-- <tr th:each = "report: ${userList}">
+                   <!-- <tr th:each = "modReport: ${modReportList}">
                        
-                        <td><a th:text="${report.reportedId}">View Profile</a></td>
-                      <td th:text = "${report.reportId}"></td>
-                        <td th:text = "${report.explanation}"></td>
-                        <td th:text = "${report.postId}"></td>
+                        <td><a th:text="${modReport.reportedId}">View Profile</a></td>
+                      <td th:text = "${modReport.reportId}"></td>
+                        <td th:text = "${modReport.explanation}"></td>
+                        <td th:text = "${modReport.postId}"></td>
 
                         <td>
-                            <form th:action="@{/admin/artist/{reportedIdId}/toggle-ban(userId=${reportedId.id})}" method="post">
+                            <form th:action="@{/admin/artist/{reportedId}/toggle-ban(userId=${modReport.id})}" method="post">
                                 <button class="btn" type="submit" th:text="${report.banned ? 'Unban' : 'Ban'}"> Ban</button>
                             </form>
                         </td> -->                          
