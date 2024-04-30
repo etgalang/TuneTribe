@@ -24,7 +24,7 @@ public class ModReportRepository {
       NamedParameterJdbcTemplate template;
      
      List<ModReport>findAll(){
-        String query = "select id, explanation, reported_id, reporter_id, post_id from report";
+        String query = "select id, mod_explanation, post_id from mod_report";
         return template.query(query,
                 (result, rowNum)
                 -> new ModReport(result.getLong("id"),
