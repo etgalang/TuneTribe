@@ -82,10 +82,38 @@ public class AdminService {
         });
     }
 
+ 
+    public void banReportedUser(Long userId) {
+        Optional<User> reportedUserOptional = userRepo.findById(userId);
+        reportedUserOptional.ifPresent(reportedUser -> {
+            // Check if the reported user is not already banned
+            if (!reportedUser.isBanned()) {
+                // Ban the reported user
+                reportedUser.setBanned(true);
+                userRepo.save(reportedUser);
+            }
+        });
+    }
+
+    // Unban the reported user
+    public void unbanReportedUser(Long userId) {
+        Optional<User> reportedUserOptional = userRepo.findById(userId);
+        reportedUserOptional.ifPresent(reportedUser -> {
+            // Check if the reported user is currently banned
+            if (reportedUser.isBanned()) {
+                // Unban the reported user
+                reportedUser.setBanned(false);
+                userRepo.save(reportedUser);
+            }
+        });
+    }
+
+
     public boolean isUserBanned(String username) {
         Optional<User> userOptional = userRepo.findByUserName(username);
         return userOptional.map(User::isBanned).orElse(false);
     }
+
 
     public void deleteUser(long id) {
         userRepo.deleteById(id);

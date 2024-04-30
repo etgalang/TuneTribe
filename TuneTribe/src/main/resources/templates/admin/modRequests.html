@@ -103,43 +103,26 @@
             <thead>
                 <tr>
                     <th>ID</th>      
+                    <th>Post ID</th>
                     <th>Explanation</th>
                     <th>Action</th>
                 </tr>
             </thead>
-                <tbody>
-
-                   <!-- <tr th:each = "modReport: ${modReportList}">
-                       
-                        <td><a th:text="${modReport.reportedId}">View Profile</a></td>
-                      <td th:text = "${modReport.reportId}"></td>
-                        <td th:text = "${modReport.explanation}"></td>
-                        <td th:text = "${modReport.postId}"></td>
-
-                        <td>
-                            <form th:action="@{/admin/artist/{reportedId}/toggle-ban(userId=${modReport.id})}" method="post">
-                                <button class="btn" type="submit" th:text="${report.banned ? 'Unban' : 'Ban'}"> Ban</button>
-                            </form>
-                        </td> -->                          
+            <tbody>
+                <tr th:each="modReport: ${modReportList}" th:style="${modReport.banned} ? 'color: red;' : 'color: green;'">
+                    <td><a th:text="${modReport.id}">View Profile</a></td>
+                    <td th:text="${modReport.postId}"></td>
+                    <td th:text="${modReport.modExplanation}"></td>
+                    <td>
+                        <form th:action="@{/admin/modRequest/{id}/toggle-ban(id=${modReport.id})}" method="post">
+                            <button class="btn" type="submit" th:text="${modReport.banned ? 'Unban' : 'Ban'}">Toggle Ban</button>
+                        </form>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
