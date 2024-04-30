@@ -84,7 +84,7 @@ public class SecurityConfig {
                     } 
                     
                     else if (auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("Artist"))) {
-                        return "/artist/artist-home";
+                        return "redirect:/artist/home";
                     }
                     else {
                         return "/"; // Redirect regular users to root page
