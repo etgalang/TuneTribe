@@ -51,17 +51,18 @@ public class ModController {
         List<Post> posts = pService.getAllPosts();
         Collections.reverse(posts);
         List<Song> songs = sService.getAllSongs();
-        
+       
         //Next Create a map to associate a songId with a Song object
         Map<Long, Song> songMap = new HashMap<>();
         for (Song song: songs) {
             songMap.put(song.getId(),song);
         }
         
+           System.out.println(posts.get(1).getUsername());
         model.addAttribute("user", service.getUser(currUser));
         model.addAttribute("postList", posts);
-        model.addAttribute("songMap", songMap);
-        return "user/user-home";
+        model.addAttribute("songList", songMap);
+        return "mod/mod";
     }
 
 }
