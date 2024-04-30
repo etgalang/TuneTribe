@@ -116,8 +116,8 @@
 
                     <tr th:each = "user: ${userList}" th:style="${user.banned} ? 'color: red;' : 'color: green;'">
                        
-                        <td> <a th:href="@{/user/user-myprofile/id={id}(id=${user.id})}" th:text=" ${user.id}" > </a></td>                           
-
+                        <td><a th:text="${user.id}">View Profile</a></td>
+      
                         <td th:text = "${user.userName}"></td>
                         <td th:text = "${user.userFName}"></td>
                         <td th:text = "${user.userLName}"></td>

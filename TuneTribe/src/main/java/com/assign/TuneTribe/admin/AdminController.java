@@ -73,6 +73,12 @@ public class AdminController {
         return "redirect:/admin/user"; // Redirect back to the user list page
     }
 
+   // @PostMapping("/admin/modRequest/{reportedId}/toggle-ban")
+    //public String toggleReportBan(@PathVariable Long reportId) {
+    //    adminService.toggleUserBan(reportId);
+    //    return "redirect:/admin/modRequest"; // Redirect back to the user list page
+   // }
+
     @GetMapping("/admin/artist/{userID}")
     public String deleteArtist(@PathVariable Long userID) {
         adminService.deleteUser(userID);
@@ -176,12 +182,6 @@ public String getTuneTribeService(Model model, Principal principal) {
     return "tunetribe-service"; // Issue: returning the wrong view
 }
 
-
-    @GetMapping("/user/user-myprofile/id={id}")
-    public String getUserProfile(@PathVariable long id, Model model) {
-        model.addAttribute("user", adminService.getUser(id));
-        return "user/user-myprofile";
-    }
 
 }
 

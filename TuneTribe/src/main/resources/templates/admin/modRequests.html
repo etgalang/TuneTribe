@@ -110,8 +110,18 @@
             </thead>
                 <tbody>
 
+                   <!-- <tr th:each = "report: ${userList}">
+                       
+                        <td><a th:text="${report.reportedId}">View Profile</a></td>
+                      <td th:text = "${report.reportId}"></td>
+                        <td th:text = "${report.explanation}"></td>
+                        <td th:text = "${report.postId}"></td>
 
-           
+                        <td>
+                            <form th:action="@{/admin/artist/{reportedIdId}/toggle-ban(userId=${reportedId.id})}" method="post">
+                                <button class="btn" type="submit" th:text="${report.banned ? 'Unban' : 'Ban'}"> Ban</button>
+                            </form>
+                        </td> -->                          
             </tbody>
         </table>
     </div>

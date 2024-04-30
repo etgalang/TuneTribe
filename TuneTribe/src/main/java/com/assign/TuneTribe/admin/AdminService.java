@@ -162,6 +162,8 @@ public long getTotalUsers() {
         return repo.findAll();
     }
     
-   
-
+    public User getByUsername(String username) {
+        Optional<User> userOptional = userRepo.findByUserName(username);
+        return userOptional.orElse(null); // Return user if present, otherwise null
+    }
 }
