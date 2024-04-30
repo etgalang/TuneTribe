@@ -2,6 +2,8 @@ package com.assign.TuneTribe.admin;
 
 import com.assign.TuneTribe.mod.Mod;
 import com.assign.TuneTribe.mod.ModRepository;
+import com.assign.TuneTribe.report.Report;
+import com.assign.TuneTribe.report.ReportRepository;
 import com.assign.TuneTribe.user.User;
 import com.assign.TuneTribe.user.UserRepository;
 
@@ -29,7 +31,8 @@ public class AdminService {
     @Autowired
     UserRepository userRepo;
 
-
+    @Autowired
+    ReportRepository reportRepo;
 
     public User getUser(long id) {
         return userRepo.getReferenceById(id);
@@ -61,6 +64,10 @@ public class AdminService {
                 .filter(user -> !user.getRole().equals("User"))
                 .collect(Collectors.toList());
     }
+
+   // public List<Report> getReports() {
+    //    List<Report> allReports = reportRepo.findAll();
+   // }
 
     public User getUserByUserName(String userName) {
         return userRepo.findByUserName(userName).orElseThrow(()
