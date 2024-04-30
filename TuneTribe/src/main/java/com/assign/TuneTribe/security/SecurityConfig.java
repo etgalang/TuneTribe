@@ -81,12 +81,10 @@ public class SecurityConfig {
                     if (auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("Admin"))) {
                         return "/admin/home"; // Redirect admin users to admin page
                         
-                    } 
+                    }                    
                     
-                    else if (auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("Artist"))) {
-                        return "redirect:/artist/home";
-                    }
                     else {
+                        System.out.println(auth.getAuthorities());
                         return "/"; // Redirect regular users to root page
                     }
                 }

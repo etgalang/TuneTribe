@@ -57,14 +57,23 @@ public class PostController {
         return "redirect:/user/home";
     }
     
+    
     @GetMapping("/id={id}")
     public String getPost(@PathVariable long id, Model model) {
         model.addAttribute("post", service.getPost(id));
         return "post/post-viewPost";
     }
     
-    @GetMapping("/report")
+    /*@GetMapping("/report")
     public String reportPost (){
+        
+        return "mod/report";
+    }*/
+    @GetMapping("/report={id}")
+    public String reportPost (@PathVariable long postId, Model model){
+        model.addAttribute("reporter", currUser);
+        model.addAttribute("reported", currUser);
+        
         
         return "mod/report";
     }
