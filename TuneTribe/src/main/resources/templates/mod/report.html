@@ -103,15 +103,21 @@
 <body>
     <div class="container">
         <h1>Report Form</h1>
-        <form id="reportForm" class="form-layout">
+        <form id="reportForm" class="form-layout" action="/post/createreport">
+            
+            <div class="form-row">
+                <label for="postId">PostId: </label>
+                <input readonly type="display" id="postId" name="postId" th:value="${post.postId}">
+            </div>
+            
             <div class="form-row">
                 <label for="userName">Your Username:</label>
-                <input type="text" id="userName" name="userName" required>
+                <input readonly type="display" id="userName" name="userName" th:value="${reporter.userName}">
             </div>
 
             <div class="form-row">
                 <label for="reportedUser">User Being Reported:</label>
-                <input type="text" id="reportedUser" name="reportedUser" required>
+                <input readonly type="display" id="reportedUser" name="reportedUser" th:value="${reported.userName}">
             </div>
 
             <div class="form-row">
@@ -126,18 +132,7 @@
         </form>
     </div>
 
-    <script>
-        document.getElementById("reportForm").onsubmit = function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            fetch('/submit-report', {
-                method: 'POST',
-                body: new URLSearchParams(formData)
-            }).then(response => response.json())
-              .then(data => alert(data.message))
-              .catch(error => alert('Error submitting report.'));
-        };
-    </script>
+    
     <footer>
         <p>© TuneTribe 2024</p>
     </footer>

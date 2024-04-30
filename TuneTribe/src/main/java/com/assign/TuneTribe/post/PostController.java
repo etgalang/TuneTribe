@@ -1,8 +1,11 @@
 
 package com.assign.TuneTribe.post;
 
+import com.assign.TuneTribe.report.Report;
+import com.assign.TuneTribe.report.ReportService;
 import com.assign.TuneTribe.song.Song;
 import com.assign.TuneTribe.song.SongService;
+import com.assign.TuneTribe.user.UserServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +31,12 @@ public class PostController {
     
     @Autowired
     private SongService sService;
+    
+    @Autowired
+    private ReportService rService;
+    
+    @Autowired
+    private UserServ uService;
     
     @GetMapping("/all") //convert this to get all post for a user?
     public String getAllPosts (Model model){
@@ -61,6 +70,7 @@ public class PostController {
     @GetMapping("/id={id}")
     public String getPost(@PathVariable long id, Model model) {
         model.addAttribute("post", service.getPost(id));
+        
         return "post/post-viewPost";
     }
     
@@ -69,13 +79,29 @@ public class PostController {
         
         return "mod/report";
     }*/
-    @GetMapping("/report={id}")
+    @GetMapping("/report={postId}")
     public String reportPost (@PathVariable long postId, Model model){
-        model.addAttribute("reporter", currUser);
-        model.addAttribute("reported", currUser);
-        
-        
+        model.addAttribute("reporter", uService.getUser(currUser));
+        model.addAttribute("reported", uService.getUser(service.getPost(postId).getUsername()));
+        model.addAttribute("post", service.getPost(postId));
+         
         return "mod/report";
+    }
+    
+    @GetMapping("/createreport")
+    public String reportPost (@RequestParam("postId") long postId,@RequestParam("userName") String reporter,
+            @RequestParam("reportedUser")String reported, 
+            @RequestParam("explanation")String explanation, Model model){
+        
+        Report report = new Report();
+        report.setPostId(postId);
+        report.setReportedId(uService.getUser(reported).getId());
+        report.setReporterId(uService.getUser(reporter).getId());
+        report.setExplanation(explanation);
+        
+        rService.saveReport(report);
+         
+        return "redirect:/user/home";
     }
     
 }

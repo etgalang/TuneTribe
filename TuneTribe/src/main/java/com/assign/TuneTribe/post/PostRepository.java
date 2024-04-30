@@ -51,7 +51,7 @@ public class PostRepository {
     public Post getPostById(long id) {
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(
                 "post_id", id);
-        String query = "select * from song where post_id=:post_id ";
+        String query = "select * from post where post_id=:post_id ";
         return template.queryForObject(query, namedParameters,
                 BeanPropertyRowMapper.newInstance(Post.class));
     }
