@@ -3,6 +3,7 @@ package com.assign.TuneTribe;
 import com.assign.TuneTribe.TopSongs.TopSongs;
 import com.assign.TuneTribe.TopSongs.TopSongsService;
 import com.assign.TuneTribe.admin.AdminService;
+import com.assign.TuneTribe.mod.ModService;
 import com.assign.TuneTribe.user.User;
 import com.assign.TuneTribe.user.UserRepository;
 import com.assign.TuneTribe.user.UserService;
@@ -37,6 +38,9 @@ public class AppController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private ModService modService;
 
     @GetMapping(value = {"", "/"})
     public String dashboard(Model model) {
@@ -75,6 +79,16 @@ public class AppController {
 
         return "admin/admin";
     }
+
+    @GetMapping("/mod/mod")
+    public String mod(Model model) {
+        return "mod/mod";
+    } 
+
+    @GetMapping("/artist/home")
+    public String artist(Model model) {
+        return "artist/home";
+    } 
 
     @GetMapping("/login")
     public String login() {
