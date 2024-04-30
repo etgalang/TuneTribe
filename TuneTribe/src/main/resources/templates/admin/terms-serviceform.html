@@ -107,7 +107,7 @@
     });
 
     function wrapText(style) {
-        var textarea = document.getElementById('guidelines');
+        var textarea = document.getElementById('termsService');
         var selectionStart = textarea.selectionStart;
         var selectionEnd = textarea.selectionEnd;
         var selectedText = textarea.value.substring(selectionStart, selectionEnd);
@@ -147,7 +147,7 @@
 
     function updatePreview() {
         var previewDiv = document.getElementById('preview');
-        var textarea = document.getElementById('guidelines');
+        var textarea = document.getElementById('termsService');
         previewDiv.innerHTML = textarea.value;
     }
 </script>

@@ -73,10 +73,18 @@ public class AdminController {
         return "redirect:/admin/user"; // Redirect back to the user list page
     }
 
-   // @PostMapping("/admin/modRequest/{reportedId}/toggle-ban")
-    //public String toggleReportBan(@PathVariable Long reportId) {
-    //    adminService.toggleUserBan(reportId);
-    //    return "redirect:/admin/modRequest"; // Redirect back to the user list page
+    @GetMapping("/admin/modRequests")
+    public String getModRequests(Model model, @RequestParam(name = "continue", required = false) String cont) {
+        List<Mod> modRequests = adminService.getAllRequests();
+        model.addAttribute("modRequests", modRequests);
+        return "admin/modRequests"; // Assuming this is the view to display moderator reports
+    }
+   
+
+   // @PostMapping("/admin/modRequest/{reportId}/toggle-ban")
+   // public String toggleReportBan(@PathVariable Long reportId) {
+   //     adminService.toggleReportBan(reportId);
+   //     return "redirect:/admin/modRequests"; // Redirect back to the moderator reports page
    // }
 
     @GetMapping("/admin/artist/{userID}")
@@ -103,17 +111,6 @@ public class AdminController {
         return "redirect:/admin/moderator";
     }
 
-   
-
-    @GetMapping("/admin/modRequests")
-    public String viewRequests(Model model) {
-        List<Mod> modRequest = adminService.getAllRequests(); // Assuming you have a service for managing mod requests
-    model.addAttribute("modRequest", modRequest);
-   
-        return "admin/modRequests";
-
-    
- }
 
     @GetMapping("/admin/updates")
     public String getUpdatesForm(Model model) {
