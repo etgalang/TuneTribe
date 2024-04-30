@@ -61,8 +61,8 @@ public class SongService {
         repo.updateSong(song);
     }
     
-    public Song getRecommendation(){
-        return repo.recommendSong();
+    public Song getRecommendation(String seed){
+        return repo.recommendSong(seed);
 }
     
     public Song searchSong(String query){      

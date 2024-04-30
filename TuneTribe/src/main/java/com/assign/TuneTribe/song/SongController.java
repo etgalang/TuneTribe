@@ -66,13 +66,18 @@ public class SongController {
         return "song/song-info";
     }
     
+    
     @GetMapping("/recommend")
     public String getRecommendation(@CurrentSecurityContext(expression="authentication?.name")
             String username, Model model) {
         currUser = username;
-        model.addAttribute("song", service.getRecommendation());
+        
+        Song temp = service.getSong(tpService.findByTopSongsById(uService.getUser(currUser).getId()).getSongOne());
+        
+        model.addAttribute("song", service.getRecommendation(temp.getSpotifyId()));
         return "song/song-recommend"; //need html
     }
+   
     
     @GetMapping("/create")
     public String goToUser(Model model) {

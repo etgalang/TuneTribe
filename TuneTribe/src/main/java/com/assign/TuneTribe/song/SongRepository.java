@@ -37,7 +37,7 @@ public class SongRepository {
     NamedParameterJdbcTemplate template;
     
     //spotify api start
-    private static final String accessToken = "BQDbmzjrg_FXeLyvzT3MMlpVaGf-H2GOWt2edRk3GKqcUx8XfMehVaSaZ56TJLxbEI6r7mkvAdymTFKd2UplrCb4ixYPBpmbDA3CoC0yRc2lA7bKZQc";
+    private static final String accessToken = "BQDJgWYtcnAZZ4vFXMFf5it20i5bbEBUR0g2FiUgOWKuIxpdSTASTDAyuii9cnNwGlQq28CoMKpF4FwfXiY8fLilMrMvzDZ9pSv8tRPurRH-52iQ3yU";
 
     
     List<Song> findAll() {
@@ -101,8 +101,8 @@ public class SongRepository {
         
     }
     
-    Song recommendSong(){ //get a song id to seed recommendation
-        String trackSeed = "35xvhWIZMpsDcJxr14Ukbx";
+    Song recommendSong(String seed){ //get a song id to seed recommendation
+        String trackSeed = seed;
         try {
              SpotifyApi spotifyApi = new SpotifyApi.Builder()
                     .setAccessToken(accessToken)
