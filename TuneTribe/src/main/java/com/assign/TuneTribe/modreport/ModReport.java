@@ -30,4 +30,6 @@ public class ModReport {
     private long postId;
     
     private String modExplanation;
+
+    private boolean banned;
 }

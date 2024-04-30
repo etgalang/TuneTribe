@@ -23,13 +23,16 @@ public class ModReportRepository {
      @Autowired
       NamedParameterJdbcTemplate template;
      
-     List<ModReport>findAll(){
-        String query = "select id, mod_explanation, post_id from mod_report";
-        return template.query(query,
-                (result, rowNum)
-                -> new ModReport(result.getLong("id"),
-                        result.getLong("post_id"), result.getString(
-                        "mod_explanation")));
+      List<ModReport> findAll() {
+        String query = "SELECT id, mod_explanation, post_id, banned FROM mod_report";
+        return template.query(query, (result, rowNum) -> {
+            ModReport modReport = new ModReport();
+            modReport.setId(result.getLong("id"));
+            modReport.setPostId(result.getLong("post_id"));
+            modReport.setModExplanation(result.getString("mod_explanation"));
+            modReport.setBanned(result.getBoolean("banned"));
+            return modReport;
+        });
     }
      
      public ModReport getReportById(long id){
@@ -47,6 +50,15 @@ public class ModReportRepository {
         String query = "INSERT INTO mod_report(post_id,mod_explanation) VALUES(:post_id, :mod_explanation)";
         
         return template.update(query, paramMap);
+    }
+
+    public void updateBannedStatus(long id, boolean banned) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", id);
+        paramMap.put("banned", banned);
+        
+        String query = "UPDATE mod_report SET banned = :banned WHERE id = :id";
+        template.update(query, paramMap);
     }
      
 }
