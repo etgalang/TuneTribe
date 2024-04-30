@@ -1,0 +1,93 @@
+/* Basic Reset */
+body, h1, form, button, input, textarea {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px; /* Adjust width of the container */
+    margin: 20px auto; /* Centers the container */
+    padding: 20px; /* Padding inside the container */
+    background: #fff; /* White background for the container */
+    border: 1px solid #ddd; /* Grey border around the container */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.form-layout .form-row {
+    margin-bottom: 20px; /* Space between form rows */
+}
+
+label {
+    display: block; /* Ensure labels are on their own line */
+    margin-bottom: 5px; /* Space between label and input */
+}
+
+input[type="text"], textarea {
+    width: 100%; /* Full width inputs and textareas */
+    padding: 8px; /* Padding inside inputs and textareas */
+    margin-bottom: 10px; /* Space below inputs and textareas */
+    border: 1px solid #ccc; /* Grey border around inputs and textareas */
+    border-radius: 4px; /* Rounded corners for inputs and textareas */
+}
+
+textarea {
+    height: 100px; /* Fixed height for textarea */
+}
+
+.form-actions {
+    text-align: center; /* Center align the form actions */
+    padding-top: 20px; /* Space above the buttons */
+}
+
+button {
+    padding: 10px 20px; /* Padding inside buttons */
+    margin-right: 10px; /* Space between buttons */
+    background-color: #4CAF50; /* Green background for buttons */
+    color: white; /* White text color for buttons */
+    border: none; /* No border for buttons */
+    border-radius: 4px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green background on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        width: 90%; /* More responsive width on smaller screens */
+        padding: 10px; /* Less padding on smaller screens */
+    }
+
+    .form-actions {
+        padding-top: 10px; /* Less space above buttons on smaller screens */
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 20px 10px;
+    background-color: #f0f0f0; /* Light gray background */
+    color: #666; /* Darker gray text color */
+    border-top: 1px solid #ddd; /* A subtle border line at the top of the footer */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0; /* Removes default margin */
+    font-size: 14px;
+}
