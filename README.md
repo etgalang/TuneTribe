@@ -15,6 +15,13 @@ platform fosters community interaction while providing exposure for emerging art
 a positive user experience by managing comments and addressing any issues. Admins oversee the
 platform's operations and have the authority to ban users or artists if necessary.
 
+## State of the Project
+Currently, the project is up and running for both normal users and admins. A user can create an account, 
+and most of the use cases have been implemented, except for those related to friends or followers/following. 
+All other user use cases have been implemented. For admins, all use cases have been fully implemented. 
+For moderators, to be in a usable state, we just need to implement some backend functionalities to send 
+and receive data from the database. For artists, there is currently no implementation.
+
 ![UML case diagram (8)](https://github.com/etgalang/TuneTribe/assets/156261506/2e48d630-5d7b-4b40-b486-7fdbef12af71)
 
 
