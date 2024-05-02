@@ -22,6 +22,7 @@ All other user use cases have been implemented. For admins, all use cases have b
 For moderators, to be in a usable state, we just need to implement some backend functionalities to send 
 and receive data from the database. For artists, there is currently no implementation.
 
+## Use Case Diagram
 ![UML case diagram (8)](https://github.com/etgalang/TuneTribe/assets/156261506/2e48d630-5d7b-4b40-b486-7fdbef12af71)
 
 
