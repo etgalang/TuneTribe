@@ -23,7 +23,7 @@ For moderators, to be in a usable state, we just need to implement some backend 
 and receive data from the database. For artists, there is currently no implementation.
 
 ## Use Case Diagram
-![UML case diagram (8)](https://github.com/etgalang/TuneTribe/assets/156261506/2e48d630-5d7b-4b40-b486-7fdbef12af71)
+![UML case diagram (8)](https://github.com/etgalang/TuneTribe/assets/156261506/0352f287-b6e8-4546-afcd-9e8096163bba)
 
 
 
